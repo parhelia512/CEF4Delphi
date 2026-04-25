@@ -44,166 +44,166 @@ type
   TChromiumCore = class(TComponent, IChromiumEvents)
     protected
       {$IFDEF MSWINDOWS}
-      FCompHandle                     : HWND;
+      FCompHandle                          : HWND;
       {$ENDIF}
-      FHandler                        : ICefClient;
-      FBrowsersCS                     : TCriticalSection;
-      FBrowsers                       : TBrowserInfoList;
-      FBrowserId                      : integer;
-      FMultiBrowserMode               : boolean;
-      FReqContextHandler              : ICefRequestContextHandler;
-      FResourceRequestHandler         : ICefResourceRequestHandler;
-      FMediaObserver                  : ICefMediaObserver;
-      FMediaObserverReg               : ICefRegistration;
-      FDevToolsMsgObserver            : ICefDevToolsMessageObserver;
-      FDevToolsMsgObserverReg         : ICefRegistration;
-      FSettingObserver                : ICefSettingObserver;
-      FSettingObserverReg             : ICefRegistration;
-      FCefComponentUpdater            : ICefComponentUpdater;
-      FPreferenceInfoList             : TPreferenceInfoList;
-      FPreferenceInfoCS               : TCriticalSection;
-      FDefaultUrl                     : ustring;
-      FOptions                        : TChromiumOptions;
-      FFontOptions                    : TChromiumFontOptions;
-      FPDFPrintOptions                : TPDFPrintOptions;
-      FDefaultEncoding                : ustring;
-      FProxyType                      : integer;
-      FProxyScheme                    : TCefProxyScheme;
-      FProxyServer                    : ustring;
-      FProxyPort                      : integer;
-      FProxyUsername                  : ustring;
-      FProxyPassword                  : ustring;
-      FProxyScriptURL                 : ustring;
-      FProxyByPassList                : ustring;
-      FMaxConnectionsPerProxy         : integer;
-      FUpdatePreferences              : boolean;
-      FCustomHeaderName               : ustring;
-      FCustomHeaderValue              : ustring;
-      FAddCustomHeader                : boolean;
-      FDoNotTrack                     : boolean;
-      FSendReferrer                   : boolean;
-      FHyperlinkAuditing              : boolean;
-      FAllowOutdatedPlugins           : boolean;
-      FAlwaysAuthorizePlugins         : boolean;
-      FAlwaysOpenPDFExternally        : boolean;
-      FSpellChecking                  : boolean;
-      FSpellCheckerDicts              : ustring;
-      FZoomStep                       : byte;
-      FZoomStepCS                     : TCriticalSection;
-      FPrefsFileName                  : string;
-      FIsOSR                          : boolean;
-      FSafeSearch                     : boolean;
-      FOffline                        : boolean;
-      FYouTubeRestrict                : integer;
-      FPrintingEnabled                : boolean;
-      FWindowInfo                     : TCEFWindowInfoWrapper;
-      FBrowserSettings                : TCefBrowserSettings;
-      FDevWindowInfo                  : TCEFWindowInfoWrapper;
-      FDevBrowserSettings             : TCefBrowserSettings;
-      FDragOperations                 : TCefDragOperations;
+      FHandler                             : ICefClient;
+      FBrowsersCS                          : TCriticalSection;
+      FBrowsers                            : TBrowserInfoList;
+      FBrowserId                           : integer;
+      FMultiBrowserMode                    : boolean;
+      FReqContextHandler                   : ICefRequestContextHandler;
+      FResourceRequestHandler              : ICefResourceRequestHandler;
+      FMediaObserver                       : ICefMediaObserver;
+      FMediaObserverReg                    : ICefRegistration;
+      FDevToolsMsgObserver                 : ICefDevToolsMessageObserver;
+      FDevToolsMsgObserverReg              : ICefRegistration;
+      FSettingObserver                     : ICefSettingObserver;
+      FSettingObserverReg                  : ICefRegistration;
+      FCefComponentUpdater                 : ICefComponentUpdater;
+      FPreferenceInfoList                  : TPreferenceInfoList;
+      FPreferenceInfoCS                    : TCriticalSection;
+      FDefaultUrl                          : ustring;
+      FOptions                             : TChromiumOptions;
+      FFontOptions                         : TChromiumFontOptions;
+      FPDFPrintOptions                     : TPDFPrintOptions;
+      FDefaultEncoding                     : ustring;
+      FProxyType                           : integer;
+      FProxyScheme                         : TCefProxyScheme;
+      FProxyServer                         : ustring;
+      FProxyPort                           : integer;
+      FProxyUsername                       : ustring;
+      FProxyPassword                       : ustring;
+      FProxyScriptURL                      : ustring;
+      FProxyByPassList                     : ustring;
+      FMaxConnectionsPerProxy              : integer;
+      FUpdatePreferences                   : boolean;
+      FCustomHeaderName                    : ustring;
+      FCustomHeaderValue                   : ustring;
+      FAddCustomHeader                     : boolean;
+      FDoNotTrack                          : boolean;
+      FSendReferrer                        : boolean;
+      FHyperlinkAuditing                   : boolean;
+      FAllowOutdatedPlugins                : boolean;
+      FAlwaysAuthorizePlugins              : boolean;
+      FAlwaysOpenPDFExternally             : boolean;
+      FSpellChecking                       : boolean;
+      FSpellCheckerDicts                   : ustring;
+      FZoomStep                            : byte;
+      FZoomStepCS                          : TCriticalSection;
+      FPrefsFileName                       : string;
+      FIsOSR                               : boolean;
+      FSafeSearch                          : boolean;
+      FOffline                             : boolean;
+      FYouTubeRestrict                     : integer;
+      FPrintingEnabled                     : boolean;
+      FWindowInfo                          : TCEFWindowInfoWrapper;
+      FBrowserSettings                     : TCefBrowserSettings;
+      FDevWindowInfo                       : TCEFWindowInfoWrapper;
+      FDevBrowserSettings                  : TCefBrowserSettings;
+      FDragOperations                      : TCefDragOperations;
       {$IFDEF MSWINDOWS}
-      FDragDropManager                : TCEFDragAndDropMgr;
-      FDropTargetWnd                  : HWND;
+      FDragDropManager                     : TCEFDragAndDropMgr;
+      FDropTargetWnd                       : HWND;
       {$ENDIF}
-      FDragAndDropInitialized         : boolean;
-      FWebRTCIPHandlingPolicy         : TCefWebRTCHandlingPolicy;
-      FWebRTCMultipleRoutes           : TCefState;
-      FWebRTCNonProxiedUDP            : TCefState;
-      FAcceptCookies                  : TCefCookiePref;
-      FBlock3rdPartyCookies           : boolean;
-      FQuicAllowed                    : boolean;
-      FJavascriptEnabled              : boolean;
-      FLoadImagesAutomatically        : boolean;
-      FCanFocus                       : boolean;
-      FEnableFocusDelayMs             : cardinal;
-      FComponentID                    : integer;
-      FDownloadBubble                 : TCefState;
-      FHTTPSUpgrade                   : TCefState;
-      FHSTSPolicyBypassList           : ustring;
-      FCredentialsService             : TCefState;
-      FAutofillCreditCard             : TCefState;
-      FAutofillProfile                : TCefState;
-      FAutofillSaveData               : TCefState;
-      FCanMakePayment                 : TCefState;
-      FSearchSuggestEnabled           : TCefState;
-      FURLDataCollection              : TCefState;
-      FTryingToCloseBrowser           : boolean;
-      FStorageNotificationService     : TCefState;
+      FDragAndDropInitialized              : boolean;
+      FWebRTCIPHandlingPolicy              : TCefWebRTCHandlingPolicy;
+      FWebRTCMultipleRoutes                : TCefState;
+      FWebRTCNonProxiedUDP                 : TCefState;
+      FAcceptCookies                       : TCefCookiePref;
+      FBlock3rdPartyCookies                : boolean;
+      FQuicAllowed                         : boolean;
+      FJavascriptEnabled                   : boolean;
+      FLoadImagesAutomatically             : boolean;
+      FCanFocus                            : boolean;
+      FEnableFocusDelayMs                  : cardinal;
+      FComponentID                         : integer;
+      FDownloadBubble                      : TCefState;
+      FHTTPSUpgrade                        : TCefState;
+      FHSTSPolicyBypassList                : ustring;
+      FCredentialsService                  : TCefState;
+      FAutofillCreditCard                  : TCefState;
+      FAutofillProfile                     : TCefState;
+      FAutofillSaveData                    : TCefState;
+      FCanMakePayment                      : TCefState;
+      FSearchSuggestEnabled                : TCefState;
+      FURLDataCollection                   : TCefState;
+      FTryingToCloseBrowser                : boolean;
+      FStorageNotificationService          : TCefState;
 
       {$IFDEF LINUX}
-      FXDisplay                       : PXDisplay;
-      FGlobalXDisplay                 : PXDisplay;
+      FXDisplay                            : PXDisplay;
+      FGlobalXDisplay                      : PXDisplay;
       {$ENDIF}
 
       {$IFDEF MSWINDOWS}
-      FOldBrowserCompWndPrc           : TFNWndProc;
-      FOldRenderCompWndPrc            : TFNWndProc;
-      FBrowserCompStub                : Pointer;
-      FRenderCompStub                 : Pointer;
-      FBrowserCompHWND                : THandle;
-      FRenderCompHWND                 : THandle;
+      FOldBrowserCompWndPrc                : TFNWndProc;
+      FOldRenderCompWndPrc                 : TFNWndProc;
+      FBrowserCompStub                     : Pointer;
+      FRenderCompStub                      : Pointer;
+      FBrowserCompHWND                     : THandle;
+      FRenderCompHWND                      : THandle;
       {$ENDIF}
 
       // ICefClient
-      FOnProcessMessageReceived       : TOnProcessMessageReceived;
+      FOnProcessMessageReceived            : TOnProcessMessageReceived;
 
       // ICefLoadHandler
-      FOnLoadStart                    : TOnLoadStart;
-      FOnLoadEnd                      : TOnLoadEnd;
-      FOnLoadError                    : TOnLoadError;
-      FOnLoadingStateChange           : TOnLoadingStateChange;
+      FOnLoadStart                         : TOnLoadStart;
+      FOnLoadEnd                           : TOnLoadEnd;
+      FOnLoadError                         : TOnLoadError;
+      FOnLoadingStateChange                : TOnLoadingStateChange;
 
       // ICefFocusHandler
-      FOnTakeFocus                    : TOnTakeFocus;
-      FOnSetFocus                     : TOnSetFocus;
-      FOnGotFocus                     : TOnGotFocus;
+      FOnTakeFocus                         : TOnTakeFocus;
+      FOnSetFocus                          : TOnSetFocus;
+      FOnGotFocus                          : TOnGotFocus;
 
       // ICefContextMenuHandler
-      FOnBeforeContextMenu            : TOnBeforeContextMenu;
-      FOnRunContextMenu               : TOnRunContextMenu;
-      FOnContextMenuCommand           : TOnContextMenuCommand;
-      FOnContextMenuDismissed         : TOnContextMenuDismissed;
-      FOnRunQuickMenu                 : TOnRunQuickMenuEvent;
-      FOnQuickMenuCommand             : TOnQuickMenuCommandEvent;
-      FOnQuickMenuDismissed           : TOnQuickMenuDismissedEvent;
+      FOnBeforeContextMenu                 : TOnBeforeContextMenu;
+      FOnRunContextMenu                    : TOnRunContextMenu;
+      FOnContextMenuCommand                : TOnContextMenuCommand;
+      FOnContextMenuDismissed              : TOnContextMenuDismissed;
+      FOnRunQuickMenu                      : TOnRunQuickMenuEvent;
+      FOnQuickMenuCommand                  : TOnQuickMenuCommandEvent;
+      FOnQuickMenuDismissed                : TOnQuickMenuDismissedEvent;
 
       // ICefKeyboardHandler
-      FOnPreKeyEvent                  : TOnPreKeyEvent;
-      FOnKeyEvent                     : TOnKeyEvent;
+      FOnPreKeyEvent                       : TOnPreKeyEvent;
+      FOnKeyEvent                          : TOnKeyEvent;
 
       // ICefDisplayHandler
-      FOnAddressChange                : TOnAddressChange;
-      FOnTitleChange                  : TOnTitleChange;
-      FOnFavIconUrlChange             : TOnFavIconUrlChange;
-      FOnFullScreenModeChange         : TOnFullScreenModeChange;
-      FOnTooltip                      : TOnTooltip;
-      FOnStatusMessage                : TOnStatusMessage;
-      FOnConsoleMessage               : TOnConsoleMessage;
-      FOnAutoResize                   : TOnAutoResize;
-      FOnLoadingProgressChange        : TOnLoadingProgressChange;
-      FOnCursorChange                 : TOnCursorChange;
-      FOnMediaAccessChange            : TOnMediaAccessChange;
-      FOnContentsBoundsChange         : TOnContentsBoundsChange;
-      FOnGetRootWindowScreenRect      : TOnGetRootWindowScreenRect;
+      FOnAddressChange                     : TOnAddressChange;
+      FOnTitleChange                       : TOnTitleChange;
+      FOnFavIconUrlChange                  : TOnFavIconUrlChange;
+      FOnFullScreenModeChange              : TOnFullScreenModeChange;
+      FOnTooltip                           : TOnTooltip;
+      FOnStatusMessage                     : TOnStatusMessage;
+      FOnConsoleMessage                    : TOnConsoleMessage;
+      FOnAutoResize                        : TOnAutoResize;
+      FOnLoadingProgressChange             : TOnLoadingProgressChange;
+      FOnCursorChange                      : TOnCursorChange;
+      FOnMediaAccessChange                 : TOnMediaAccessChange;
+      FOnContentsBoundsChange              : TOnContentsBoundsChange;
+      FOnGetRootWindowScreenRect           : TOnGetRootWindowScreenRect;
 
       // ICefDownloadHandler
-      FOnCanDownload                  : TOnCanDownloadEvent;
-      FOnBeforeDownload               : TOnBeforeDownload;
-      FOnDownloadUpdated              : TOnDownloadUpdated;
+      FOnCanDownload                       : TOnCanDownloadEvent;
+      FOnBeforeDownload                    : TOnBeforeDownload;
+      FOnDownloadUpdated                   : TOnDownloadUpdated;
 
       // ICefJsDialogHandler
-      FOnJsdialog                     : TOnJsdialog;
-      FOnBeforeUnloadDialog           : TOnBeforeUnloadDialog;
-      FOnResetDialogState             : TOnResetDialogState;
-      FOnDialogClosed                 : TOnDialogClosed;
+      FOnJsdialog                          : TOnJsdialog;
+      FOnBeforeUnloadDialog                : TOnBeforeUnloadDialog;
+      FOnResetDialogState                  : TOnResetDialogState;
+      FOnDialogClosed                      : TOnDialogClosed;
 
       // ICefLifeSpanHandler
-      FOnBeforePopup                  : TOnBeforePopup;
-      FOnBeforePopupAborted           : TOnBeforePopupAborted;
-      FOnBeforeDevToolsPopup          : TOnBeforeDevToolsPopup;
-      FOnAfterCreated                 : TOnAfterCreated;
-      FOnBeforeClose                  : TOnBeforeClose;
-      FOnClose                        : TOnClose;
+      FOnBeforePopup                       : TOnBeforePopup;
+      FOnBeforePopupAborted                : TOnBeforePopupAborted;
+      FOnBeforeDevToolsPopup               : TOnBeforeDevToolsPopup;
+      FOnAfterCreated                      : TOnAfterCreated;
+      FOnBeforeClose                       : TOnBeforeClose;
+      FOnClose                             : TOnClose;
 
       // ICefRequestHandler
       FOnBeforeBrowse                      : TOnBeforeBrowse;
@@ -215,139 +215,139 @@ type
       FOnRenderProcessUnresponsive         : TOnRenderProcessUnresponsive;
       FOnRenderProcessResponsive           : TOnRenderProcessResponsive;
       FOnRenderProcessTerminated           : TOnRenderProcessTerminated;
-      FOnGetResourceRequestHandler_ReqHdlr : TOnGetResourceRequestHandler;
+      FOnGetResourceRequestHandler1        : TOnGetResourceRequestHandler;
       FOnDocumentAvailableInMainFrame      : TOnDocumentAvailableInMainFrame;
 
       // ICefResourceRequestHandler
-      FOnBeforeResourceLoad           : TOnBeforeResourceLoad;
-      FOnGetResourceHandler           : TOnGetResourceHandler;
-      FOnResourceRedirect             : TOnResourceRedirect;
-      FOnResourceResponse             : TOnResourceResponse;
-      FOnGetResourceResponseFilter    : TOnGetResourceResponseFilter;
-      FOnResourceLoadComplete         : TOnResourceLoadComplete;
-      FOnProtocolExecution            : TOnProtocolExecution;
+      FOnBeforeResourceLoad                : TOnBeforeResourceLoad;
+      FOnGetResourceHandler                : TOnGetResourceHandler;
+      FOnResourceRedirect                  : TOnResourceRedirect;
+      FOnResourceResponse                  : TOnResourceResponse;
+      FOnGetResourceResponseFilter         : TOnGetResourceResponseFilter;
+      FOnResourceLoadComplete              : TOnResourceLoadComplete;
+      FOnProtocolExecution                 : TOnProtocolExecution;
 
       // ICefCookieAccessFilter
-      FOnCanSendCookie                : TOnCanSendCookie;
-      FOnCanSaveCookie                : TOnCanSaveCookie;
+      FOnCanSendCookie                     : TOnCanSendCookie;
+      FOnCanSaveCookie                     : TOnCanSaveCookie;
 
       // ICefDialogHandler
-      FOnFileDialog                   : TOnFileDialog;
+      FOnFileDialog                        : TOnFileDialog;
 
       // ICefRenderHandler
-      FOnGetAccessibilityHandler      : TOnGetAccessibilityHandler;
-      FOnGetRootScreenRect            : TOnGetRootScreenRect;
-      FOnGetViewRect                  : TOnGetViewRect;
-      FOnGetScreenPoint               : TOnGetScreenPoint;
-      FOnGetScreenInfo                : TOnGetScreenInfo;
-      FOnPopupShow                    : TOnPopupShow;
-      FOnPopupSize                    : TOnPopupSize;
-      FOnPaint                        : TOnPaint;
-      FOnAcceleratedPaint             : TOnAcceleratedPaint;
-      FOnGetTouchHandleSize           : TOnGetTouchHandleSize;
-      FOnTouchHandleStateChanged      : TOnTouchHandleStateChanged;
-      FOnStartDragging                : TOnStartDragging;
-      FOnUpdateDragCursor             : TOnUpdateDragCursor;
-      FOnScrollOffsetChanged          : TOnScrollOffsetChanged;
-      FOnIMECompositionRangeChanged   : TOnIMECompositionRangeChanged;
-      FOnTextSelectionChanged         : TOnTextSelectionChanged;
-      FOnVirtualKeyboardRequested     : TOnVirtualKeyboardRequested;
+      FOnGetAccessibilityHandler           : TOnGetAccessibilityHandler;
+      FOnGetRootScreenRect                 : TOnGetRootScreenRect;
+      FOnGetViewRect                       : TOnGetViewRect;
+      FOnGetScreenPoint                    : TOnGetScreenPoint;
+      FOnGetScreenInfo                     : TOnGetScreenInfo;
+      FOnPopupShow                         : TOnPopupShow;
+      FOnPopupSize                         : TOnPopupSize;
+      FOnPaint                             : TOnPaint;
+      FOnAcceleratedPaint                  : TOnAcceleratedPaint;
+      FOnGetTouchHandleSize                : TOnGetTouchHandleSize;
+      FOnTouchHandleStateChanged           : TOnTouchHandleStateChanged;
+      FOnStartDragging                     : TOnStartDragging;
+      FOnUpdateDragCursor                  : TOnUpdateDragCursor;
+      FOnScrollOffsetChanged               : TOnScrollOffsetChanged;
+      FOnIMECompositionRangeChanged        : TOnIMECompositionRangeChanged;
+      FOnTextSelectionChanged              : TOnTextSelectionChanged;
+      FOnVirtualKeyboardRequested          : TOnVirtualKeyboardRequested;
 
       // ICefDragHandler
-      FOnDragEnter                    : TOnDragEnter;
-      FOnDraggableRegionsChanged      : TOnDraggableRegionsChanged;
+      FOnDragEnter                         : TOnDragEnter;
+      FOnDraggableRegionsChanged           : TOnDraggableRegionsChanged;
 
       // ICefFindHandler
-      FOnFindResult                   : TOnFindResult;
+      FOnFindResult                        : TOnFindResult;
 
       // ICefRequestContextHandler
-      FOnRequestContextInitialized             : TOnRequestContextInitialized;
-      FOnGetResourceRequestHandler_ReqCtxHdlr  : TOnGetResourceRequestHandler;
+      FOnRequestContextInitialized         : TOnRequestContextInitialized;
+      FOnGetResourceRequestHandler2        : TOnGetResourceRequestHandler;
 
       // ICefMediaObserver
-      FOnSinks                            : TOnSinksEvent;
-      FOnRoutes                           : TOnRoutesEvent;
-      FOnRouteStateChanged                : TOnRouteStateChangedEvent;
-      FOnRouteMessageReceived             : TOnRouteMessageReceivedEvent;
+      FOnSinks                             : TOnSinksEvent;
+      FOnRoutes                            : TOnRoutesEvent;
+      FOnRouteStateChanged                 : TOnRouteStateChangedEvent;
+      FOnRouteMessageReceived              : TOnRouteMessageReceivedEvent;
 
       // ICefAudioHandler
-      FOnGetAudioParameters               : TOnGetAudioParametersEvent;
-      FOnAudioStreamStarted               : TOnAudioStreamStartedEvent;
-      FOnAudioStreamPacket                : TOnAudioStreamPacketEvent;
-      FOnAudioStreamStopped               : TOnAudioStreamStoppedEvent;
-      FOnAudioStreamError                 : TOnAudioStreamErrorEvent;
+      FOnGetAudioParameters                : TOnGetAudioParametersEvent;
+      FOnAudioStreamStarted                : TOnAudioStreamStartedEvent;
+      FOnAudioStreamPacket                 : TOnAudioStreamPacketEvent;
+      FOnAudioStreamStopped                : TOnAudioStreamStoppedEvent;
+      FOnAudioStreamError                  : TOnAudioStreamErrorEvent;
 
       // ICefDevToolsMessageObserver
-      FOnDevToolsMessage                  : TOnDevToolsMessageEvent;
-      FOnDevToolsRawMessage               : TOnDevToolsRawMessageEvent;
-      FOnDevToolsMethodResult             : TOnDevToolsMethodResultEvent;
-      FOnDevToolsMethodRawResult          : TOnDevToolsMethodRawResultEvent;
-      FOnDevToolsEvent                    : TOnDevToolsEventEvent;
-      FOnDevToolsRawEvent                 : TOnDevToolsEventRawEvent;
-      FOnDevToolsAgentAttached            : TOnDevToolsAgentAttachedEvent;
-      FOnDevToolsAgentDetached            : TOnDevToolsAgentDetachedEvent;
+      FOnDevToolsMessage                   : TOnDevToolsMessageEvent;
+      FOnDevToolsRawMessage                : TOnDevToolsRawMessageEvent;
+      FOnDevToolsMethodResult              : TOnDevToolsMethodResultEvent;
+      FOnDevToolsMethodRawResult           : TOnDevToolsMethodRawResultEvent;
+      FOnDevToolsEvent                     : TOnDevToolsEventEvent;
+      FOnDevToolsRawEvent                  : TOnDevToolsEventRawEvent;
+      FOnDevToolsAgentAttached             : TOnDevToolsAgentAttachedEvent;
+      FOnDevToolsAgentDetached             : TOnDevToolsAgentDetachedEvent;
 
       // ICefPrintHandler
-      FOnPrintStart                       : TOnPrintStartEvent;
-      FOnPrintSettings                    : TOnPrintSettingsEvent;
-      FOnPrintDialog                      : TOnPrintDialogEvent;
-      FOnPrintJob                         : TOnPrintJobEvent;
-      FOnPrintReset                       : TOnPrintResetEvent;
-      FOnGetPDFPaperSize                  : TOnGetPDFPaperSizeEvent;
+      FOnPrintStart                        : TOnPrintStartEvent;
+      FOnPrintSettings                     : TOnPrintSettingsEvent;
+      FOnPrintDialog                       : TOnPrintDialogEvent;
+      FOnPrintJob                          : TOnPrintJobEvent;
+      FOnPrintReset                        : TOnPrintResetEvent;
+      FOnGetPDFPaperSize                   : TOnGetPDFPaperSizeEvent;
 
       // ICefFrameHandler
-      FOnFrameCreated                     : TOnFrameCreated;
-      FOnFrameDestroyed                   : TOnFrameDestroyed;
-      FOnFrameAttached                    : TOnFrameAttached;
-      FOnFrameDetached                    : TOnFrameDetached;
-      FOnMainFrameChanged                 : TOnMainFrameChanged;
+      FOnFrameCreated                      : TOnFrameCreated;
+      FOnFrameDestroyed                    : TOnFrameDestroyed;
+      FOnFrameAttached                     : TOnFrameAttached;
+      FOnFrameDetached                     : TOnFrameDetached;
+      FOnMainFrameChanged                  : TOnMainFrameChanged;
 
       // ICefCommandHandler
-      FOnChromeCommand                    : TOnChromeCommandEvent;
-      FOnIsChromeAppMenuItemVisible       : TOnIsChromeAppMenuItemVisibleEvent;
-      FOnIsChromeAppMenuItemEnabled       : TOnIsChromeAppMenuItemEnabledEvent;
-      FOnIsChromePageActionIconVisible    : TOnIsChromePageActionIconVisibleEvent;
-      FOnIsChromeToolbarButtonVisible     : TOnIsChromeToolbarButtonVisibleEvent;
+      FOnChromeCommand                     : TOnChromeCommandEvent;
+      FOnIsChromeAppMenuItemVisible        : TOnIsChromeAppMenuItemVisibleEvent;
+      FOnIsChromeAppMenuItemEnabled        : TOnIsChromeAppMenuItemEnabledEvent;
+      FOnIsChromePageActionIconVisible     : TOnIsChromePageActionIconVisibleEvent;
+      FOnIsChromeToolbarButtonVisible      : TOnIsChromeToolbarButtonVisibleEvent;
 
       // ICefPermissionHandler
-      FOnRequestMediaAccessPermission     : TOnRequestMediaAccessPermissionEvent;
-      FOnShowPermissionPrompt             : TOnShowPermissionPromptEvent;
-      FOnDismissPermissionPrompt          : TOnDismissPermissionPromptEvent;
+      FOnRequestMediaAccessPermission      : TOnRequestMediaAccessPermissionEvent;
+      FOnShowPermissionPrompt              : TOnShowPermissionPromptEvent;
+      FOnDismissPermissionPrompt           : TOnDismissPermissionPromptEvent;
 
       // ICefPreferenceObserver
-      FOnPreferenceChanged                : TOnPreferenceChangedEvent;
+      FOnPreferenceChanged                 : TOnPreferenceChangedEvent;
 
       // ICefSettingObserver
-      FOnSettingChanged                   : TOnSettingChangedEvent;
+      FOnSettingChanged                    : TOnSettingChangedEvent;
 
       // ICefComponentUpdateCallback
-      FOnComponentUpdateCompleted         : TOnComponentUpdateCompletedEvent;
+      FOnComponentUpdateCompleted          : TOnComponentUpdateCompletedEvent;
 
       // Custom
-      FOnTextResultAvailable              : TOnTextResultAvailableEvent;
-      FOnPdfPrintFinished                 : TOnPdfPrintFinishedEvent;
-      FOnPrefsAvailable                   : TOnPrefsAvailableEvent;
-      FOnPrefsUpdated                     : TNotifyEvent;
-      FOnCookiesDeleted                   : TOnCookiesDeletedEvent;
-      FOnResolvedHostAvailable            : TOnResolvedIPsAvailableEvent;
-      FOnNavigationVisitorResultAvailable : TOnNavigationVisitorResultAvailableEvent;
-      FOnDownloadImageFinished            : TOnDownloadImageFinishedEvent;
-      FOnCookiesFlushed                   : TNotifyEvent;
-      FOnCertificateExceptionsCleared     : TNotifyEvent;
-      FOnHttpAuthCredentialsCleared       : TNotifyEvent;
-      FOnAllConnectionsClosed             : TNotifyEvent;
-      FOnHttpCacheCleared                 : TNotifyEvent;
-      FOnExecuteTaskOnCefThread           : TOnExecuteTaskOnCefThread;
-      FOnCookiesVisited                   : TOnCookiesVisited;
-      FOnCookieVisitorDestroyed           : TOnCookieVisitorDestroyed;
-      FOnCookieSet                        : TOnCookieSet;
-      FOnZoomPctAvailable                 : TOnZoomPctAvailable;
-      FOnMediaRouteCreateFinished         : TOnMediaRouteCreateFinishedEvent;
-      FOnMediaSinkDeviceInfo              : TOnMediaSinkDeviceInfoEvent;
-      FOnCanFocus                         : TNotifyEvent;
+      FOnTextResultAvailable               : TOnTextResultAvailableEvent;
+      FOnPdfPrintFinished                  : TOnPdfPrintFinishedEvent;
+      FOnPrefsAvailable                    : TOnPrefsAvailableEvent;
+      FOnPrefsUpdated                      : TNotifyEvent;
+      FOnCookiesDeleted                    : TOnCookiesDeletedEvent;
+      FOnResolvedHostAvailable             : TOnResolvedIPsAvailableEvent;
+      FOnNavigationVisitorResultAvailable  : TOnNavigationVisitorResultAvailableEvent;
+      FOnDownloadImageFinished             : TOnDownloadImageFinishedEvent;
+      FOnCookiesFlushed                    : TNotifyEvent;
+      FOnCertificateExceptionsCleared      : TNotifyEvent;
+      FOnHttpAuthCredentialsCleared        : TNotifyEvent;
+      FOnAllConnectionsClosed              : TNotifyEvent;
+      FOnHttpCacheCleared                  : TNotifyEvent;
+      FOnExecuteTaskOnCefThread            : TOnExecuteTaskOnCefThread;
+      FOnCookiesVisited                    : TOnCookiesVisited;
+      FOnCookieVisitorDestroyed            : TOnCookieVisitorDestroyed;
+      FOnCookieSet                         : TOnCookieSet;
+      FOnZoomPctAvailable                  : TOnZoomPctAvailable;
+      FOnMediaRouteCreateFinished          : TOnMediaRouteCreateFinishedEvent;
+      FOnMediaSinkDeviceInfo               : TOnMediaSinkDeviceInfoEvent;
+      FOnCanFocus                          : TNotifyEvent;
       {$IFDEF MSWINDOWS}
-      FOnBrowserCompMsg                   : TOnCompMsgEvent;
-      FOnRenderCompMsg                    : TOnCompMsgEvent;
+      FOnBrowserCompMsg                    : TOnCompMsgEvent;
+      FOnRenderCompMsg                     : TOnCompMsgEvent;
       {$ENDIF}
 
       function  GetIsLoading : boolean;
@@ -1461,7 +1461,7 @@ type
       /// new/additional user actions can use this function. Set |will_cause_resize|
       /// to true (1) if exiting browser fullscreen will cause a view resize.
       /// </summary>
-      procedure ExitFullscreen(will_cause_resize: boolean);
+      procedure   ExitFullscreen(will_cause_resize: boolean);
       /// <summary>
       /// Returns true (1) if a Chrome command is supported and enabled. Use the
       /// cef_id_for_command_id_name() function for version-safe mapping of command
@@ -1473,7 +1473,7 @@ type
       /// <para><see cref="uCEFConstants">See the IDC_* constants in uCEFConstants.pas for all the |command_id| values.</see></para>
       /// <para><see href="https://source.chromium.org/chromium/chromium/src/+/main:chrome/app/chrome_command_ids.h">The command_id values are also available in chrome/app/chrome_command_ids.h</see></para>
       /// </remarks>
-      function CanExecuteChromeCommand(command_id: integer): boolean;
+      function   CanExecuteChromeCommand(command_id: integer): boolean;
       /// <summary>
       /// Returns true (1) if a Chrome command is supported and enabled. Use the
       /// cef_id_for_command_id_name() function for version-safe mapping of command
@@ -1485,7 +1485,7 @@ type
       /// <para><see cref="uCEFConstants">See the IDC_* constants in uCEFConstants.pas for all the |command_id| values.</see></para>
       /// <para><see href="https://source.chromium.org/chromium/chromium/src/+/main:chrome/app/chrome_command_ids.h">The command_id values are also available in chrome/app/chrome_command_ids.h</see></para>
       /// </remarks>
-      procedure ExecuteChromeCommand(command_id: integer; disposition: TCefWindowOpenDisposition);
+      procedure   ExecuteChromeCommand(command_id: integer; disposition: TCefWindowOpenDisposition);
       /// <summary>
       /// Enable or disable CDP accessibility tree viewport collapse for this
       /// browser. When enabled, off-screen landmarks and headings are serialized as
@@ -1498,7 +1498,7 @@ type
       /// Platform screen readers (NVDA, JAWS, VoiceOver) are unaffected — they use
       /// a separate code path.
       /// </summary>
-      procedure SetAxViewportCollapse(enabled: boolean);      {* CEF_API_ADDED(CEF_EXPERIMENTAL) *}
+      procedure   SetAxViewportCollapse(enabled: boolean);      {* CEF_API_ADDED(CEF_EXPERIMENTAL) *}
       /// <summary>
       /// Issue a BeginFrame request to Chromium.  Only valid when
       /// TCefWindowInfo.external_begin_frame_enabled is set to true (1).
@@ -2329,160 +2329,160 @@ type
       /// <summary>
       /// Enable the file download bubble when using Chrome style.
       /// </summary>
-      property DownloadBubble                 : TCefState                    read FDownloadBubble              write FDownloadBubble;
+      property  DownloadBubble                 : TCefState                    read FDownloadBubble              write FDownloadBubble;
       /// <summary>
       /// Automatically upgrade to HTTPS connections.
       /// </summary>
-      property HTTPSUpgrade                   : TCefState                    read FHTTPSUpgrade                write FHTTPSUpgrade;
+      property  HTTPSUpgrade                   : TCefState                    read FHTTPSUpgrade                write FHTTPSUpgrade;
       /// <summary>
       /// List of comma-delimited  single-label hostnames that will skip the check to possibly upgrade from http to https.
       /// </summary>
-      property HSTSPolicyBypassList           : ustring                      read FHSTSPolicyBypassList        write FHSTSPolicyBypassList;
+      property  HSTSPolicyBypassList           : ustring                      read FHSTSPolicyBypassList        write FHSTSPolicyBypassList;
       /// <summary>
       /// This service shows a dialog to save the usernames and passwords in Chrome style.
       /// </summary>
-      property CredentialsService             : TCefState                    read FCredentialsService          write FCredentialsService;
+      property  CredentialsService             : TCefState                    read FCredentialsService          write FCredentialsService;
       /// <summary>
       /// Browser preference used to enable the autofill feature for credit card information.
       /// </summary>
       /// <remarks>
       /// <para>Disabling this property is a suggested workaround for some autofill crashes in Alloy style.</para>
       /// </remarks>
-      property AutofillCreditCard             : TCefState                    read FAutofillCreditCard          write FAutofillCreditCard;
+      property  AutofillCreditCard             : TCefState                    read FAutofillCreditCard          write FAutofillCreditCard;
       /// <summary>
       /// Browser preference used to enable the autofill feature for profile information.
       /// </summary>
       /// <remarks>
       /// <para>Disabling this property is a suggested workaround for some autofill crashes in Alloy style.</para>
       /// </remarks>
-      property AutofillProfile                : TCefState                    read FAutofillProfile             write FAutofillProfile;
+      property  AutofillProfile                : TCefState                    read FAutofillProfile             write FAutofillProfile;
       /// <summary>
       /// Browser preference used to enable the autofill feature for saving data.
       /// </summary>
       /// <remarks>
       /// <para>Disabling this property is a suggested workaround for some autofill crashes in Alloy style.</para>
       /// </remarks>
-      property AutofillSaveData               : TCefState                    read FAutofillSaveData            write FAutofillSaveData;
+      property  AutofillSaveData               : TCefState                    read FAutofillSaveData            write FAutofillSaveData;
       /// <summary>
       /// Browser preference used to enable saving information about payments.
       /// </summary>
       /// <remarks>
       /// <para>Disabling this property is a suggested workaround for some autofill crashes in Alloy style.</para>
       /// </remarks>
-      property CanMakePayment                 : TCefState                    read FCanMakePayment              write FCanMakePayment;
+      property  CanMakePayment                 : TCefState                    read FCanMakePayment              write FCanMakePayment;
       /// <summary>
       /// Browser preference used to enable search suggestions.
       /// </summary>
       /// <remarks>
       /// <para>Disabling this property is a suggested workaround for some autofill crashes in Alloy style.</para>
       /// </remarks>
-      property SearchSuggestEnabled           : TCefState                    read FSearchSuggestEnabled        write FSearchSuggestEnabled;
+      property  SearchSuggestEnabled           : TCefState                    read FSearchSuggestEnabled        write FSearchSuggestEnabled;
       /// <summary>
       /// Browser preference used to enable url keyed anonymized data collection.
       /// </summary>
       /// <remarks>
       /// <para>Disabling this property is a suggested workaround for some autofill crashes in Alloy style.</para>
       /// </remarks>
-      property URLDataCollection              : TCefState                    read FURLDataCollection           write FURLDataCollection;
+      property  URLDataCollection              : TCefState                    read FURLDataCollection           write FURLDataCollection;
       /// <summary>
       /// Used to disable the "Free up space to continue" notification for the current profile.
       /// </summary>
-      property StorageNotificationService     : TCefState                    read FStorageNotificationService  write FStorageNotificationService;
+      property  StorageNotificationService     : TCefState                    read FStorageNotificationService  write FStorageNotificationService;
 
     published
       /// <summary>
       /// Triggered after a TChromiumCore.RetrieveHTML or TChromiumCore.RetrieveText call with the HTML or text results.
       /// </summary>
-      property  OnTextResultAvailable              : TOnTextResultAvailableEvent              read FOnTextResultAvailable              write FOnTextResultAvailable;
+      property OnTextResultAvailable               : TOnTextResultAvailableEvent              read FOnTextResultAvailable              write FOnTextResultAvailable;
       /// <summary>
       ///	Triggered after a TChromiumCore.PrintToPDF call when the PDF has been created.
       /// </summary>
-      property  OnPdfPrintFinished                 : TOnPdfPrintFinishedEvent                 read FOnPdfPrintFinished                 write FOnPdfPrintFinished;
+      property OnPdfPrintFinished                  : TOnPdfPrintFinishedEvent                 read FOnPdfPrintFinished                 write FOnPdfPrintFinished;
       /// <summary>
       /// Triggered after a TChromiumCore.SavePreferences call when the preferences have been saved.
       /// </summary>
-      property  OnPrefsAvailable                   : TOnPrefsAvailableEvent                   read FOnPrefsAvailable                   write FOnPrefsAvailable;
+      property OnPrefsAvailable                    : TOnPrefsAvailableEvent                   read FOnPrefsAvailable                   write FOnPrefsAvailable;
       /// <summary>
       /// Triggered when the browser preferences have been updated.
       /// </summary>
-      property  OnPrefsUpdated                     : TNotifyEvent                             read FOnPrefsUpdated                     write FOnPrefsUpdated;
+      property OnPrefsUpdated                      : TNotifyEvent                             read FOnPrefsUpdated                     write FOnPrefsUpdated;
       /// <summary>
       /// Triggered after a TChromiumCore.DeleteCookies call when the cookies have been deleted.
       /// </summary>
-      property  OnCookiesDeleted                   : TOnCookiesDeletedEvent                   read FOnCookiesDeleted                   write FOnCookiesDeleted;
+      property OnCookiesDeleted                    : TOnCookiesDeletedEvent                   read FOnCookiesDeleted                   write FOnCookiesDeleted;
       /// <summary>
       /// Triggered after a TChromiumCore.ResolveHost call with the host information.
       /// </summary>
-      property  OnResolvedHostAvailable            : TOnResolvedIPsAvailableEvent             read FOnResolvedHostAvailable            write FOnResolvedHostAvailable;
+      property OnResolvedHostAvailable             : TOnResolvedIPsAvailableEvent             read FOnResolvedHostAvailable            write FOnResolvedHostAvailable;
       /// <summary>
       ///	Triggered after a TChromiumCore.GetNavigationEntries call with a navigation entry.
       /// </summary>
-      property  OnNavigationVisitorResultAvailable : TOnNavigationVisitorResultAvailableEvent read FOnNavigationVisitorResultAvailable write FOnNavigationVisitorResultAvailable;
+      property OnNavigationVisitorResultAvailable  : TOnNavigationVisitorResultAvailableEvent read FOnNavigationVisitorResultAvailable write FOnNavigationVisitorResultAvailable;
       /// <summary>
       ///	Triggered after a TChromiumCore.DownloadImage call when the download is complete.
       /// </summary>
-      property  OnDownloadImageFinished            : TOnDownloadImageFinishedEvent            read FOnDownloadImageFinished            write FOnDownloadImageFinished;
+      property OnDownloadImageFinished             : TOnDownloadImageFinishedEvent            read FOnDownloadImageFinished            write FOnDownloadImageFinished;
       /// <summary>
       ///	Triggered after a TChromiumCore.FlushCookieStore call when the cookies are flushed.
       /// </summary>
-      property  OnCookiesFlushed                   : TNotifyEvent                             read FOnCookiesFlushed                   write FOnCookiesFlushed;
+      property OnCookiesFlushed                    : TNotifyEvent                             read FOnCookiesFlushed                   write FOnCookiesFlushed;
       /// <summary>
       /// Triggered after a TChromiumCore.ClearCertificateExceptions call when the exceptions are cleared.
       /// </summary>
-      property  OnCertificateExceptionsCleared     : TNotifyEvent                             read FOnCertificateExceptionsCleared     write FOnCertificateExceptionsCleared;
+      property OnCertificateExceptionsCleared      : TNotifyEvent                             read FOnCertificateExceptionsCleared     write FOnCertificateExceptionsCleared;
       /// <summary>
       /// Triggered after a TChromiumCore.ClearHttpAuthCredentials call when the credentials are cleared.
       /// </summary>
-      property  OnHttpAuthCredentialsCleared       : TNotifyEvent                             read FOnHttpAuthCredentialsCleared       write FOnHttpAuthCredentialsCleared;
+      property OnHttpAuthCredentialsCleared        : TNotifyEvent                             read FOnHttpAuthCredentialsCleared       write FOnHttpAuthCredentialsCleared;
       /// <summary>
       /// Triggered after a TChromiumCore.CloseAllConnections call when the connections are closed.
       /// </summary>
-      property  OnAllConnectionsClosed             : TNotifyEvent                             read FOnAllConnectionsClosed             write FOnAllConnectionsClosed;
+      property OnAllConnectionsClosed              : TNotifyEvent                             read FOnAllConnectionsClosed             write FOnAllConnectionsClosed;
       /// <summary>
       /// Triggered after a TChromiumCore.ClearHttpCache call when the http cache is cleared.
       /// </summary>
-      property  OnHttpCacheCleared                 : TNotifyEvent                             read FOnHttpCacheCleared                 write FOnHttpCacheCleared;
+      property OnHttpCacheCleared                  : TNotifyEvent                             read FOnHttpCacheCleared                 write FOnHttpCacheCleared;
       /// <summary>
       /// Triggered after a TChromiumCore.ExecuteTaskOnCefThread call in the context of the specified CEF thread.
       /// </summary>
-      property  OnExecuteTaskOnCefThread           : TOnExecuteTaskOnCefThread                read FOnExecuteTaskOnCefThread           write FOnExecuteTaskOnCefThread;
+      property OnExecuteTaskOnCefThread            : TOnExecuteTaskOnCefThread                read FOnExecuteTaskOnCefThread           write FOnExecuteTaskOnCefThread;
       /// <summary>
       /// Triggered after a TChromiumCore.VisitAllCookies call with cookie information.
       /// </summary>
-      property  OnCookiesVisited                   : TOnCookiesVisited                        read FOnCookiesVisited                   write FOnCookiesVisited;
+      property OnCookiesVisited                    : TOnCookiesVisited                        read FOnCookiesVisited                   write FOnCookiesVisited;
       /// <summary>
       /// 	Triggered after a TChromiumCore.VisitAllCookies call when the IcefCookieVisitor has been destroyed.
       /// </summary>
-      property  OnCookieVisitorDestroyed           : TOnCookieVisitorDestroyed                read FOnCookieVisitorDestroyed           write FOnCookieVisitorDestroyed;
+      property OnCookieVisitorDestroyed            : TOnCookieVisitorDestroyed                read FOnCookieVisitorDestroyed           write FOnCookieVisitorDestroyed;
       /// <summary>
       /// Triggered after a TChromiumCore.SetCookie call when the cookie has been set.
       /// </summary>
-      property  OnCookieSet                        : TOnCookieSet                             read FOnCookieSet                        write FOnCookieSet;
+      property OnCookieSet                         : TOnCookieSet                             read FOnCookieSet                        write FOnCookieSet;
       /// <summary>
       /// Triggered after a call to any of the procedures to increase, decrease or reset the zoom with the new zoom value.
       /// </summary>
-      property  OnZoomPctAvailable                 : TOnZoomPctAvailable                      read FOnZoomPctAvailable                 write FOnZoomPctAvailable;
+      property OnZoomPctAvailable                  : TOnZoomPctAvailable                      read FOnZoomPctAvailable                 write FOnZoomPctAvailable;
       /// <summary>
       /// Triggered after a TChromiumCore.CreateRoute call when the route is created.
       /// </summary>
-      property  OnMediaRouteCreateFinished         : TOnMediaRouteCreateFinishedEvent         read FOnMediaRouteCreateFinished         write FOnMediaRouteCreateFinished;
+      property OnMediaRouteCreateFinished          : TOnMediaRouteCreateFinishedEvent         read FOnMediaRouteCreateFinished         write FOnMediaRouteCreateFinished;
       /// <summary>
       /// Triggered after a TChromiumCore.GetDeviceInfo call with the device info.
       /// </summary>
-      property  OnMediaSinkDeviceInfo              : TOnMediaSinkDeviceInfoEvent              read FOnMediaSinkDeviceInfo              write FOnMediaSinkDeviceInfo;
+      property OnMediaSinkDeviceInfo               : TOnMediaSinkDeviceInfoEvent              read FOnMediaSinkDeviceInfo              write FOnMediaSinkDeviceInfo;
       /// <summary>
       /// Triggered when the browser is capable of being focused.
       /// </summary>
-      property  OnCanFocus                         : TNotifyEvent                             read FOnCanFocus                         write FOnCanFocus;
+      property OnCanFocus                          : TNotifyEvent                             read FOnCanFocus                         write FOnCanFocus;
       {$IFDEF MSWINDOWS}
       /// <summary>
       /// Triggered for all messages sent to the child controls created by CEF to show the web contents.
       /// </summary>
-      property  OnBrowserCompMsg                   : TOnCompMsgEvent                          read FOnBrowserCompMsg                   write FOnBrowserCompMsg;
+      property OnBrowserCompMsg                    : TOnCompMsgEvent                          read FOnBrowserCompMsg                   write FOnBrowserCompMsg;
       /// <summary>
       /// Triggered for all messages sent to the child controls created by CEF to show the web contents.
       /// </summary>
-      property  OnRenderCompMsg                    : TOnCompMsgEvent                          read FOnRenderCompMsg                    write FOnRenderCompMsg;
+      property OnRenderCompMsg                     : TOnCompMsgEvent                          read FOnRenderCompMsg                    write FOnRenderCompMsg;
       {$ENDIF}
 
       /// <summary>
@@ -2493,7 +2493,7 @@ type
       /// <remarks>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_client_capi.h">CEF source file: /include/capi/cef_client_capi.h (cef_client_t)</see></para>
       /// </remarks>
-      property OnProcessMessageReceived         : TOnProcessMessageReceived         read FOnProcessMessageReceived         write FOnProcessMessageReceived;
+      property OnProcessMessageReceived            : TOnProcessMessageReceived                read FOnProcessMessageReceived           write FOnProcessMessageReceived;
       /// <summary>
       /// Called after a navigation has been committed and before the browser begins
       /// loading contents in the frame. The |frame| value will never be NULL --
@@ -2510,7 +2510,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_load_handler_capi.h">CEF source file: /include/capi/cef_load_handler_capi.h (cef_load_handler_t)</see></para>
       /// </remarks>
-      property OnLoadStart                      : TOnLoadStart                      read FOnLoadStart                      write FOnLoadStart;
+      property OnLoadStart                         : TOnLoadStart                             read FOnLoadStart                        write FOnLoadStart;
       /// <summary>
       /// Called when the browser is done loading a frame. The |frame| value will
       /// never be NULL -- call the IsMain() function to check if this frame is the
@@ -2525,7 +2525,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_load_handler_capi.h">CEF source file: /include/capi/cef_load_handler_capi.h (cef_load_handler_t)</see></para>
       /// </remarks>
-      property OnLoadEnd                        : TOnLoadEnd                        read FOnLoadEnd                        write FOnLoadEnd;
+      property OnLoadEnd                           : TOnLoadEnd                               read FOnLoadEnd                          write FOnLoadEnd;
       /// <summary>
       /// Called when a navigation fails or is canceled. This function may be called
       /// by itself if before commit or in combination with OnLoadStart/OnLoadEnd if
@@ -2537,7 +2537,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_load_handler_capi.h">CEF source file: /include/capi/cef_load_handler_capi.h (cef_load_handler_t)</see></para>
       /// </remarks>
-      property OnLoadError                      : TOnLoadError                      read FOnLoadError                      write FOnLoadError;
+      property OnLoadError                         : TOnLoadError                             read FOnLoadError                        write FOnLoadError;
       /// <summary>
       /// Called when the loading state has changed. This callback will be executed
       /// twice -- once when loading is initiated either programmatically or by user
@@ -2549,7 +2549,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_load_handler_capi.h">CEF source file: /include/capi/cef_load_handler_capi.h (cef_load_handler_t)</see></para>
       /// </remarks>
-      property OnLoadingStateChange             : TOnLoadingStateChange             read FOnLoadingStateChange             write FOnLoadingStateChange;
+      property OnLoadingStateChange                : TOnLoadingStateChange                    read FOnLoadingStateChange               write FOnLoadingStateChange;
       /// <summary>
       /// Called when the browser component is about to loose focus. For instance,
       /// if focus was on the last HTML element and the user pressed the TAB key.
@@ -2561,7 +2561,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_focus_handler_capi.h">CEF source file: /include/capi/cef_focus_handler_capi.h (cef_focus_handler_t)</see></para>
       /// </remarks>
-      property OnTakeFocus                      : TOnTakeFocus                      read FOnTakeFocus                      write FOnTakeFocus;
+      property OnTakeFocus                         : TOnTakeFocus                             read FOnTakeFocus                        write FOnTakeFocus;
       /// <summary>
       /// Called when the browser component is requesting focus. |source| indicates
       /// where the focus request is originating from. Return false (0) to allow the
@@ -2571,7 +2571,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_focus_handler_capi.h">CEF source file: /include/capi/cef_focus_handler_capi.h (cef_focus_handler_t)</see></para>
       /// </remarks>
-      property OnSetFocus                       : TOnSetFocus                       read FOnSetFocus                       write FOnSetFocus;
+      property OnSetFocus                          : TOnSetFocus                              read FOnSetFocus                         write FOnSetFocus;
       /// <summary>
       /// Called when the browser component has received focus.
       /// </summary>
@@ -2579,7 +2579,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_focus_handler_capi.h">CEF source file: /include/capi/cef_focus_handler_capi.h (cef_focus_handler_t)</see></para>
       /// </remarks>
-      property OnGotFocus                       : TOnGotFocus                       read FOnGotFocus                       write FOnGotFocus;
+      property OnGotFocus                          : TOnGotFocus                              read FOnGotFocus                         write FOnGotFocus;
       /// <summary>
       /// Called before a context menu is displayed. |params| provides information
       /// about the context menu state. |model| initially contains the default
@@ -2591,7 +2591,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_context_menu_handler_capi.h">CEF source file: /include/capi/cef_context_menu_handler_capi.h (cef_context_menu_handler_t)</see></para>
       /// </remarks>
-      property OnBeforeContextMenu              : TOnBeforeContextMenu              read FOnBeforeContextMenu              write FOnBeforeContextMenu;
+      property OnBeforeContextMenu                 : TOnBeforeContextMenu                    read FOnBeforeContextMenu                  write FOnBeforeContextMenu;
       /// <summary>
       /// Called to allow custom display of the context menu. |params| provides
       /// information about the context menu state. |model| contains the context
@@ -2604,7 +2604,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_context_menu_handler_capi.h">CEF source file: /include/capi/cef_context_menu_handler_capi.h (cef_context_menu_handler_t)</see></para>
       /// </remarks>
-      property OnRunContextMenu                 : TOnRunContextMenu                 read FOnRunContextMenu                 write FOnRunContextMenu;
+      property OnRunContextMenu                    : TOnRunContextMenu                        read FOnRunContextMenu                   write FOnRunContextMenu;
       /// <summary>
       /// Called to execute a command selected from the context menu. Return true
       /// (1) if the command was handled or false (0) for the default
@@ -2618,7 +2618,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_context_menu_handler_capi.h">CEF source file: /include/capi/cef_context_menu_handler_capi.h (cef_context_menu_handler_t)</see></para>
       /// </remarks>
-      property OnContextMenuCommand             : TOnContextMenuCommand             read FOnContextMenuCommand             write FOnContextMenuCommand;
+      property OnContextMenuCommand                : TOnContextMenuCommand                    read FOnContextMenuCommand               write FOnContextMenuCommand;
       /// <summary>
       /// Called when the context menu is dismissed irregardless of whether the menu
       /// was canceled or a command was selected.
@@ -2627,7 +2627,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_context_menu_handler_capi.h">CEF source file: /include/capi/cef_context_menu_handler_capi.h (cef_context_menu_handler_t)</see></para>
       /// </remarks>
-      property OnContextMenuDismissed           : TOnContextMenuDismissed           read FOnContextMenuDismissed           write FOnContextMenuDismissed;
+      property OnContextMenuDismissed              : TOnContextMenuDismissed                  read FOnContextMenuDismissed             write FOnContextMenuDismissed;
       /// <summary>
       /// Called to allow custom display of the quick menu for a windowless browser.
       /// |location| is the top left corner of the selected region. |size| is the
@@ -2641,7 +2641,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_context_menu_handler_capi.h">CEF source file: /include/capi/cef_context_menu_handler_capi.h (cef_context_menu_handler_t)</see></para>
       /// </remarks>
-      property OnRunQuickMenu                   : TOnRunQuickMenuEvent              read FOnRunQuickMenu                   write FOnRunQuickMenu;
+      property OnRunQuickMenu                      : TOnRunQuickMenuEvent                     read FOnRunQuickMenu                     write FOnRunQuickMenu;
       /// <summary>
       /// Called to execute a command selected from the quick menu for a windowless
       /// browser. Return true (1) if the command was handled or false (0) for the
@@ -2652,7 +2652,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_context_menu_handler_capi.h">CEF source file: /include/capi/cef_context_menu_handler_capi.h (cef_context_menu_handler_t)</see></para>
       /// </remarks>
-      property OnQuickMenuCommand               : TOnQuickMenuCommandEvent          read FOnQuickMenuCommand               write FOnQuickMenuCommand;
+      property OnQuickMenuCommand                  : TOnQuickMenuCommandEvent                 read FOnQuickMenuCommand                 write FOnQuickMenuCommand;
       /// <summary>
       /// Called when the quick menu for a windowless browser is dismissed
       /// irregardless of whether the menu was canceled or a command was selected.
@@ -2661,7 +2661,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_context_menu_handler_capi.h">CEF source file: /include/capi/cef_context_menu_handler_capi.h (cef_context_menu_handler_t)</see></para>
       /// </remarks>
-      property OnQuickMenuDismissed             : TOnQuickMenuDismissedEvent        read FOnQuickMenuDismissed             write FOnQuickMenuDismissed;
+      property OnQuickMenuDismissed                : TOnQuickMenuDismissedEvent               read FOnQuickMenuDismissed               write FOnQuickMenuDismissed;
       /// <summary>
       /// Called before a keyboard event is sent to the renderer. |event| contains
       /// information about the keyboard event. |os_event| is the operating system
@@ -2674,7 +2674,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_keyboard_handler_capi.h">CEF source file: /include/capi/cef_keyboard_handler_capi.h (cef_keyboard_handler_t)</see></para>
       /// </remarks>
-      property OnPreKeyEvent                    : TOnPreKeyEvent                    read FOnPreKeyEvent                    write FOnPreKeyEvent;
+      property OnPreKeyEvent                       : TOnPreKeyEvent                           read FOnPreKeyEvent                      write FOnPreKeyEvent;
       /// <summary>
       /// Called after the renderer and JavaScript in the page has had a chance to
       /// handle the event. |event| contains information about the keyboard event.
@@ -2685,7 +2685,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_keyboard_handler_capi.h">CEF source file: /include/capi/cef_keyboard_handler_capi.h (cef_keyboard_handler_t)</see></para>
       /// </remarks>
-      property OnKeyEvent                       : TOnKeyEvent                       read FOnKeyEvent                       write FOnKeyEvent;
+      property OnKeyEvent                          : TOnKeyEvent                              read FOnKeyEvent                         write FOnKeyEvent;
       /// <summary>
       /// Called when a frame's address has changed.
       /// </summary>
@@ -2693,7 +2693,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_display_handler_capi.h">CEF source file: /include/capi/cef_display_handler_capi.h (cef_display_handler_t)</see></para>
       /// </remarks>
-      property OnAddressChange                  : TOnAddressChange                  read FOnAddressChange                  write FOnAddressChange;
+      property OnAddressChange                     : TOnAddressChange                         read FOnAddressChange                    write FOnAddressChange;
       /// <summary>
       /// Called when the page title changes.
       /// </summary>
@@ -2701,7 +2701,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_display_handler_capi.h">CEF source file: /include/capi/cef_display_handler_capi.h (cef_display_handler_t)</see></para>
       /// </remarks>
-      property OnTitleChange                    : TOnTitleChange                    read FOnTitleChange                    write FOnTitleChange;
+      property OnTitleChange                       : TOnTitleChange                           read FOnTitleChange                      write FOnTitleChange;
       /// <summary>
       /// Called when the page icon changes.
       /// </summary>
@@ -2709,7 +2709,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_display_handler_capi.h">CEF source file: /include/capi/cef_display_handler_capi.h (cef_display_handler_t)</see></para>
       /// </remarks>
-      property OnFavIconUrlChange               : TOnFavIconUrlChange               read FOnFavIconUrlChange               write FOnFavIconUrlChange;
+      property OnFavIconUrlChange                  : TOnFavIconUrlChange                      read FOnFavIconUrlChange                 write FOnFavIconUrlChange;
       /// <summary>
       /// Called when web content in the page has toggled fullscreen mode. If
       /// |fullscreen| is true (1) the content will automatically be sized to fill
@@ -2725,7 +2725,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_display_handler_capi.h">CEF source file: /include/capi/cef_display_handler_capi.h (cef_display_handler_t)</see></para>
       /// </remarks>
-      property OnFullScreenModeChange           : TOnFullScreenModeChange           read FOnFullScreenModeChange           write FOnFullScreenModeChange;
+      property OnFullScreenModeChange              : TOnFullScreenModeChange                  read FOnFullScreenModeChange             write FOnFullScreenModeChange;
       /// <summary>
       /// Called when the browser is about to display a tooltip. |text| contains the
       /// text that will be displayed in the tooltip. To handle the display of the
@@ -2738,7 +2738,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_display_handler_capi.h">CEF source file: /include/capi/cef_display_handler_capi.h (cef_display_handler_t)</see></para>
       /// </remarks>
-      property OnTooltip                        : TOnTooltip                        read FOnTooltip                        write FOnTooltip;
+      property OnTooltip                           : TOnTooltip                               read FOnTooltip                          write FOnTooltip;
       /// <summary>
       /// Called when the browser receives a status message. |value| contains the
       /// text that will be displayed in the status message.
@@ -2747,7 +2747,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_display_handler_capi.h">CEF source file: /include/capi/cef_display_handler_capi.h (cef_display_handler_t)</see></para>
       /// </remarks>
-      property OnStatusMessage                  : TOnStatusMessage                  read FOnStatusMessage                  write FOnStatusMessage;
+      property OnStatusMessage                     : TOnStatusMessage                         read FOnStatusMessage                    write FOnStatusMessage;
       /// <summary>
       /// Called to display a console message. Return true (1) to stop the message
       /// from being output to the console.
@@ -2756,7 +2756,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_display_handler_capi.h">CEF source file: /include/capi/cef_display_handler_capi.h (cef_display_handler_t)</see></para>
       /// </remarks>
-      property OnConsoleMessage                 : TOnConsoleMessage                 read FOnConsoleMessage                 write FOnConsoleMessage;
+      property OnConsoleMessage                    : TOnConsoleMessage                        read FOnConsoleMessage                   write FOnConsoleMessage;
       /// <summary>
       /// Called when auto-resize is enabled via
       /// cef_browser_host_t::SetAutoResizeEnabled and the contents have auto-
@@ -2767,7 +2767,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_display_handler_capi.h">CEF source file: /include/capi/cef_display_handler_capi.h (cef_display_handler_t)</see></para>
       /// </remarks>
-      property OnAutoResize                     : TOnAutoResize                     read FOnAutoResize                     write FOnAutoResize;
+      property OnAutoResize                        : TOnAutoResize                            read FOnAutoResize                       write FOnAutoResize;
       /// <summary>
       /// Called when the overall page loading progress has changed. |progress|
       /// ranges from 0.0 to 1.0.
@@ -2776,7 +2776,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_display_handler_capi.h">CEF source file: /include/capi/cef_display_handler_capi.h (cef_display_handler_t)</see></para>
       /// </remarks>
-      property OnLoadingProgressChange          : TOnLoadingProgressChange          read FOnLoadingProgressChange          write FOnLoadingProgressChange;
+      property OnLoadingProgressChange             : TOnLoadingProgressChange                 read FOnLoadingProgressChange            write FOnLoadingProgressChange;
       /// <summary>
       /// Called when the browser's cursor has changed. If |type| is CT_CUSTOM then
       /// |custom_cursor_info| will be populated with the custom cursor information.
@@ -2787,7 +2787,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_display_handler_capi.h">CEF source file: /include/capi/cef_display_handler_capi.h (cef_display_handler_t)</see></para>
       /// </remarks>
-      property OnCursorChange                   : TOnCursorChange                   read FOnCursorChange                   write FOnCursorChange;
+      property OnCursorChange                      : TOnCursorChange                          read FOnCursorChange                     write FOnCursorChange;
       /// <summary>
       /// Called when the browser's access to an audio and/or video source has
       /// changed.
@@ -2796,7 +2796,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_display_handler_capi.h">CEF source file: /include/capi/cef_display_handler_capi.h (cef_display_handler_t)</see></para>
       /// </remarks>
-      property OnMediaAccessChange              : TOnMediaAccessChange              read FOnMediaAccessChange              write FOnMediaAccessChange;
+      property OnMediaAccessChange                 : TOnMediaAccessChange                     read FOnMediaAccessChange                write FOnMediaAccessChange;
       /// <summary>
       /// <para>Called when JavaScript is requesting new bounds via window.moveTo/By() or
       /// window.resizeTo/By(). |new_bounds| are in DIP screen coordinates.</para>
@@ -2820,7 +2820,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_display_handler_capi.h">CEF source file: /include/capi/cef_display_handler_capi.h (cef_display_handler_t)</see></para>
       /// </remarks>
-      property OnContentsBoundsChange           : TOnContentsBoundsChange           read FOnContentsBoundsChange           write FOnContentsBoundsChange;
+      property OnContentsBoundsChange              : TOnContentsBoundsChange                  read FOnContentsBoundsChange             write FOnContentsBoundsChange;
       /// <summary>
       /// Called to retrieve the external (client-provided) root window rectangle in
       /// screen DIP coordinates. Only called for windowed browsers on Windows and
@@ -2833,7 +2833,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_display_handler_capi.h">CEF source file: /include/capi/cef_display_handler_capi.h (cef_display_handler_t)</see></para>
       /// </remarks>
-      property OnGetRootWindowScreenRect        : TOnGetRootWindowScreenRect        read FOnGetRootWindowScreenRect        write FOnGetRootWindowScreenRect;
+      property OnGetRootWindowScreenRect           : TOnGetRootWindowScreenRect               read FOnGetRootWindowScreenRect          write FOnGetRootWindowScreenRect;
       /// <summary>
       /// Called before a download begins in response to a user-initiated action
       /// (e.g. alt + link click or link click that returns a `Content-Disposition:
@@ -2845,7 +2845,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_download_handler_capi.h">CEF source file: /include/capi/cef_download_handler_capi.h (cef_download_handler_t)</see></para>
       /// </remarks>
-      property OnCanDownload                    : TOnCanDownloadEvent               read FOnCanDownload                    write FOnCanDownload;
+      property OnCanDownload                       : TOnCanDownloadEvent                      read FOnCanDownload                      write FOnCanDownload;
       /// <summary>
       /// Called before a download begins. |suggested_name| is the suggested name
       /// for the download file. Set aResult to true (1) and execute |callback| either
@@ -2858,7 +2858,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_download_handler_capi.h">CEF source file: /include/capi/cef_download_handler_capi.h (cef_download_handler_t)</see></para>
       /// </remarks>
-      property OnBeforeDownload                 : TOnBeforeDownload                 read FOnBeforeDownload                 write FOnBeforeDownload;
+      property OnBeforeDownload                    : TOnBeforeDownload                        read FOnBeforeDownload                   write FOnBeforeDownload;
       /// <summary>
       /// Called when a download's status or progress information has been updated.
       /// This may be called multiple times before and after OnBeforeDownload.
@@ -2870,7 +2870,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_download_handler_capi.h">CEF source file: /include/capi/cef_download_handler_capi.h (cef_download_handler_t)</see></para>
       /// </remarks>
-      property OnDownloadUpdated                : TOnDownloadUpdated                read FOnDownloadUpdated                write FOnDownloadUpdated;
+      property OnDownloadUpdated                   : TOnDownloadUpdated                       read FOnDownloadUpdated                  write FOnDownloadUpdated;
       /// <summary>
       /// Called to run a JavaScript dialog. If |origin_url| is non-NULL it can be
       /// passed to the CefFormatUrlForSecurityDisplay function to retrieve a secure
@@ -2892,7 +2892,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_jsdialog_handler_capi.h">CEF source file: /include/capi/cef_jsdialog_handler_capi.h (cef_jsdialog_handler_t)</see></para>
       /// </remarks>
-      property OnJsdialog                       : TOnJsdialog                       read FOnJsdialog                       write FOnJsdialog;
+      property OnJsdialog                          : TOnJsdialog                              read FOnJsdialog                         write FOnJsdialog;
       /// <summary>
       /// Called to run a dialog asking the user if they want to leave a page.
       /// Return false (0) to use the default dialog implementation. Return true (1)
@@ -2905,7 +2905,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_jsdialog_handler_capi.h">CEF source file: /include/capi/cef_jsdialog_handler_capi.h (cef_jsdialog_handler_t)</see></para>
       /// </remarks>
-      property OnBeforeUnloadDialog             : TOnBeforeUnloadDialog             read FOnBeforeUnloadDialog             write FOnBeforeUnloadDialog;
+      property OnBeforeUnloadDialog                : TOnBeforeUnloadDialog                    read FOnBeforeUnloadDialog               write FOnBeforeUnloadDialog;
       /// <summary>
       /// Called to cancel any pending dialogs and reset any saved dialog state.
       /// Will be called due to events like page navigation irregardless of whether
@@ -2915,7 +2915,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_jsdialog_handler_capi.h">CEF source file: /include/capi/cef_jsdialog_handler_capi.h (cef_jsdialog_handler_t)</see></para>
       /// </remarks>
-      property OnResetDialogState               : TOnResetDialogState               read FOnResetDialogState               write FOnResetDialogState;
+      property OnResetDialogState                  : TOnResetDialogState                      read FOnResetDialogState                 write FOnResetDialogState;
       /// <summary>
       /// Called when the dialog is closed.
       /// </summary>
@@ -2923,7 +2923,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_jsdialog_handler_capi.h">CEF source file: /include/capi/cef_jsdialog_handler_capi.h (cef_jsdialog_handler_t)</see></para>
       /// </remarks>
-      property OnDialogClosed                   : TOnDialogClosed                   read FOnDialogClosed                   write FOnDialogClosed;
+      property OnDialogClosed                      : TOnDialogClosed                          read FOnDialogClosed                     write FOnDialogClosed;
       /// <summary>
       /// <para>Called on the UI thread before a new popup browser is created. The
       /// |browser| and |frame| values represent the source of the popup request
@@ -2973,7 +2973,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_life_span_handler_capi.h">CEF source file: /include/capi/cef_life_span_handler_capi.h (cef_life_span_handler_t)</see></para>
       /// </remarks>
-      property OnBeforePopup                    : TOnBeforePopup                    read FOnBeforePopup                    write FOnBeforePopup;
+      property OnBeforePopup                       : TOnBeforePopup                           read FOnBeforePopup                      write FOnBeforePopup;
       /// <summary>
       /// <para>Called on the CEF UI thread if a new popup browser is aborted. This only
       /// occurs if the popup is allowed in OnBeforePopup and creation fails before
@@ -2993,7 +2993,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_life_span_handler_capi.h">CEF source file: /include/capi/cef_life_span_handler_capi.h (cef_life_span_handler_t)</see></para>
       /// </remarks>
-      property OnBeforePopupAborted             : TOnBeforePopupAborted             read FOnBeforePopupAborted             write FOnBeforePopupAborted;
+      property OnBeforePopupAborted                : TOnBeforePopupAborted                    read FOnBeforePopupAborted               write FOnBeforePopupAborted;
       /// <summary>
       /// <para>Called on the CEF UI thread before a new DevTools popup browser is created.
       /// The |browser| value represents the source of the popup request. Optionally
@@ -3015,7 +3015,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_life_span_handler_capi.h">CEF source file: /include/capi/cef_life_span_handler_capi.h (cef_life_span_handler_t)</see></para>
       /// </remarks>
-      property OnBeforeDevToolsPopup          : TOnBeforeDevToolsPopup              read FOnBeforeDevToolsPopup            write FOnBeforeDevToolsPopup;
+      property OnBeforeDevToolsPopup               : TOnBeforeDevToolsPopup                   read FOnBeforeDevToolsPopup              write FOnBeforeDevToolsPopup;
       /// <summary>
       /// Called after a new browser is created. It is now safe to begin performing
       /// actions with |browser|. ICefFrameHandler callbacks related to initial
@@ -3026,7 +3026,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_life_span_handler_capi.h">CEF source file: /include/capi/cef_life_span_handler_capi.h (cef_life_span_handler_t)</see></para>
       /// </remarks>
-      property OnAfterCreated                   : TOnAfterCreated                   read FOnAfterCreated                   write FOnAfterCreated;
+      property OnAfterCreated                      : TOnAfterCreated                          read FOnAfterCreated                     write FOnAfterCreated;
       /// <summary>
       /// Called just before a browser is destroyed. Release all references to the
       /// browser object and do not attempt to execute any functions on the browser
@@ -3044,7 +3044,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_life_span_handler_capi.h">CEF source file: /include/capi/cef_life_span_handler_capi.h (cef_life_span_handler_t)</see></para>
       /// </remarks>
-      property OnBeforeClose                    : TOnBeforeClose                    read FOnBeforeClose                    write FOnBeforeClose;
+      property OnBeforeClose                       : TOnBeforeClose                           read FOnBeforeClose                      write FOnBeforeClose;
       /// <summary>
       /// <para>Called when an Alloy style browser is ready to be closed, meaning that the
       /// close has already been initiated and that JavaScript unload handlers have
@@ -3155,7 +3155,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_life_span_handler_capi.h">CEF source file: /include/capi/cef_life_span_handler_capi.h (cef_life_span_handler_t)</see></para>
       /// </remarks>
-      property OnClose                          : TOnClose                          read FOnClose                          write FOnClose;
+      property OnClose                             : TOnClose                                 read FOnClose                            write FOnClose;
       /// <summary>
       /// <para>Called on the UI thread before browser navigation. Return true (1) to
       /// cancel the navigation or false (0) to allow the navigation to proceed. The
@@ -3173,7 +3173,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_request_handler_capi.h">CEF source file: /include/capi/cef_request_handler_capi.h (cef_request_handler_t)</see></para>
       /// </remarks>
-      property OnBeforeBrowse                      : TOnBeforeBrowse                   read FOnBeforeBrowse                      write FOnBeforeBrowse;
+      property OnBeforeBrowse                      : TOnBeforeBrowse                          read FOnBeforeBrowse                     write FOnBeforeBrowse;
       /// <summary>
       /// Called on the UI thread before OnBeforeBrowse in certain limited cases
       /// where navigating a new or different browser might be desirable. This
@@ -3194,7 +3194,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_request_handler_capi.h">CEF source file: /include/capi/cef_request_handler_capi.h (cef_request_handler_t)</see></para>
       /// </remarks>
-      property OnOpenUrlFromTab                    : TOnOpenUrlFromTab                 read FOnOpenUrlFromTab                    write FOnOpenUrlFromTab;
+      property OnOpenUrlFromTab                    : TOnOpenUrlFromTab                        read FOnOpenUrlFromTab                   write FOnOpenUrlFromTab;
       /// <summary>
       /// Called on the IO thread when the browser needs credentials from the user.
       /// |origin_url| is the origin making this authentication request. |isProxy|
@@ -3211,7 +3211,7 @@ type
       /// <para>This event will be called on the browser process CEF IO thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_request_handler_capi.h">CEF source file: /include/capi/cef_request_handler_capi.h (cef_request_handler_t)</see></para>
       /// </remarks>
-      property OnGetAuthCredentials                : TOnGetAuthCredentials             read FOnGetAuthCredentials                write FOnGetAuthCredentials;
+      property OnGetAuthCredentials                : TOnGetAuthCredentials                    read FOnGetAuthCredentials               write FOnGetAuthCredentials;
       /// <summary>
       /// Called on the UI thread to handle requests for URLs with an invalid SSL
       /// certificate. Return true (1) and call ICefCallback functions either in
@@ -3224,7 +3224,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_request_handler_capi.h">CEF source file: /include/capi/cef_request_handler_capi.h (cef_request_handler_t)</see></para>
       /// </remarks>
-      property OnCertificateError                  : TOnCertificateError               read FOnCertificateError                  write FOnCertificateError;
+      property OnCertificateError                  : TOnCertificateError                      read FOnCertificateError                 write FOnCertificateError;
       /// <summary>
       /// Called on the UI thread when a client certificate is being requested for
       /// authentication. Return false (0) to use the default behavior.  If the
@@ -3245,7 +3245,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_request_handler_capi.h">CEF source file: /include/capi/cef_request_handler_capi.h (cef_request_handler_t)</see></para>
       /// </remarks>
-      property OnSelectClientCertificate           : TOnSelectClientCertificate        read FOnSelectClientCertificate           write FOnSelectClientCertificate;
+      property OnSelectClientCertificate           : TOnSelectClientCertificate               read FOnSelectClientCertificate          write FOnSelectClientCertificate;
       /// <summary>
       /// Called on the browser process UI thread when the render view associated
       /// with |browser| is ready to receive/handle IPC messages in the render
@@ -3255,7 +3255,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_request_handler_capi.h">CEF source file: /include/capi/cef_request_handler_capi.h (cef_request_handler_t)</see></para>
       /// </remarks>
-      property OnRenderViewReady                   : TOnRenderViewReady                read FOnRenderViewReady                   write FOnRenderViewReady;
+      property OnRenderViewReady                   : TOnRenderViewReady                       read FOnRenderViewReady                  write FOnRenderViewReady;
       /// <summary>
       /// Called on the browser process UI thread when the render process is
       /// unresponsive as indicated by a lack of input event processing for at least
@@ -3278,7 +3278,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_request_handler_capi.h">CEF source file: /include/capi/cef_request_handler_capi.h (cef_request_handler_t)</see></para>
       /// </remarks>
-      property OnRenderProcessUnresponsive         : TOnRenderProcessUnresponsive      read FOnRenderProcessUnresponsive         write FOnRenderProcessUnresponsive;
+      property OnRenderProcessUnresponsive         : TOnRenderProcessUnresponsive             read FOnRenderProcessUnresponsive        write FOnRenderProcessUnresponsive;
       /// <summary>
       /// Called on the browser process UI thread when the render process becomes
       /// responsive after previously being unresponsive. See documentation on
@@ -3288,7 +3288,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_request_handler_capi.h">CEF source file: /include/capi/cef_request_handler_capi.h (cef_request_handler_t)</see></para>
       /// </remarks>
-      property OnRenderProcessResponsive           : TOnRenderProcessResponsive        read FOnRenderProcessResponsive           write FOnRenderProcessResponsive;
+      property OnRenderProcessResponsive           : TOnRenderProcessResponsive               read FOnRenderProcessResponsive          write FOnRenderProcessResponsive;
       /// <summary>
       /// Called on the browser process UI thread when the render process terminates
       /// unexpectedly. |status| indicates how the process terminated. |error_code|
@@ -3301,7 +3301,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_request_handler_capi.h">CEF source file: /include/capi/cef_request_handler_capi.h (cef_request_handler_t)</see></para>
       /// </remarks>
-      property OnRenderProcessTerminated           : TOnRenderProcessTerminated        read FOnRenderProcessTerminated           write FOnRenderProcessTerminated;
+      property OnRenderProcessTerminated           : TOnRenderProcessTerminated               read FOnRenderProcessTerminated          write FOnRenderProcessTerminated;
       /// <summary>
       /// Called on the browser process IO thread before a resource request is
       /// initiated. The |browser| and |frame| values represent the source of the
@@ -3322,7 +3322,7 @@ type
       /// <para>This event will be called on the browser process CEF IO thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_request_handler_capi.h">CEF source file: /include/capi/cef_request_handler_capi.h (cef_request_handler_t)</see></para>
       /// </remarks>
-      property OnGetResourceRequestHandler_ReqHdlr : TOnGetResourceRequestHandler      read FOnGetResourceRequestHandler_ReqHdlr write FOnGetResourceRequestHandler_ReqHdlr;
+      property OnGetResourceRequestHandler_ReqHdlr : TOnGetResourceRequestHandler             read FOnGetResourceRequestHandler1        write FOnGetResourceRequestHandler1;
       /// <summary>
       /// Called on the browser process UI thread when the window.document object of
       /// the main frame has been created.
@@ -3331,7 +3331,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_request_handler_capi.h">CEF source file: /include/capi/cef_request_handler_capi.h (cef_request_handler_t)</see></para>
       /// </remarks>
-      property OnDocumentAvailableInMainFrame      : TOnDocumentAvailableInMainFrame   read FOnDocumentAvailableInMainFrame      write FOnDocumentAvailableInMainFrame;
+      property OnDocumentAvailableInMainFrame      : TOnDocumentAvailableInMainFrame          read FOnDocumentAvailableInMainFrame      write FOnDocumentAvailableInMainFrame;
       /// <summary>
       /// Called on the IO thread before a resource request is loaded. The |browser|
       /// and |frame| values represent the source of the request, and may be NULL
@@ -3347,7 +3347,7 @@ type
       /// <para>This event will be called on the browser process CEF IO thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_resource_request_handler_capi.h">CEF source file: /include/capi/cef_resource_request_handler_capi.h (cef_resource_request_handler_t)</see></para>
       /// </remarks>
-      property OnBeforeResourceLoad             : TOnBeforeResourceLoad             read FOnBeforeResourceLoad             write FOnBeforeResourceLoad;
+      property OnBeforeResourceLoad             : TOnBeforeResourceLoad                       read FOnBeforeResourceLoad                 write FOnBeforeResourceLoad;
       /// <summary>
       /// Called on the IO thread before a resource is loaded. The |browser| and
       /// |frame| values represent the source of the request, and may be NULL for
@@ -3360,7 +3360,7 @@ type
       /// <para>This event will be called on the browser process CEF IO thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_resource_request_handler_capi.h">CEF source file: /include/capi/cef_resource_request_handler_capi.h (cef_resource_request_handler_t)</see></para>
       /// </remarks>
-      property OnGetResourceHandler             : TOnGetResourceHandler             read FOnGetResourceHandler             write FOnGetResourceHandler;
+      property OnGetResourceHandler             : TOnGetResourceHandler                       read FOnGetResourceHandler                write FOnGetResourceHandler;
       /// <summary>
       /// Called on the IO thread when a resource load is redirected. The |browser|
       /// and |frame| values represent the source of the request, and may be NULL
@@ -3375,7 +3375,7 @@ type
       /// <para>This event will be called on the browser process CEF IO thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_resource_request_handler_capi.h">CEF source file: /include/capi/cef_resource_request_handler_capi.h (cef_resource_request_handler_t)</see></para>
       /// </remarks>
-      property OnResourceRedirect               : TOnResourceRedirect               read FOnResourceRedirect               write FOnResourceRedirect;
+      property OnResourceRedirect               : TOnResourceRedirect                         read FOnResourceRedirect                  write FOnResourceRedirect;
       /// <summary>
       /// <para>Called on the IO thread when a resource response is received. The
       /// |browser| and |frame| values represent the source of the request, and may
@@ -3393,7 +3393,7 @@ type
       /// <para>This event will be called on the browser process CEF IO thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_resource_request_handler_capi.h">CEF source file: /include/capi/cef_resource_request_handler_capi.h (cef_resource_request_handler_t)</see></para>
       /// </remarks>
-      property OnResourceResponse               : TOnResourceResponse               read FOnResourceResponse               write FOnResourceResponse;
+      property OnResourceResponse               : TOnResourceResponse                         read FOnResourceResponse                  write FOnResourceResponse;
       /// <summary>
       /// Called on the IO thread to optionally filter resource response content.
       /// The |browser| and |frame| values represent the source of the request, and
@@ -3405,7 +3405,7 @@ type
       /// <para>This event will be called on the browser process CEF IO thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_resource_request_handler_capi.h">CEF source file: /include/capi/cef_resource_request_handler_capi.h (cef_resource_request_handler_t)</see></para>
       /// </remarks>
-      property OnGetResourceResponseFilter      : TOnGetResourceResponseFilter      read FOnGetResourceResponseFilter      write FOnGetResourceResponseFilter;
+      property OnGetResourceResponseFilter      : TOnGetResourceResponseFilter                read FOnGetResourceResponseFilter         write FOnGetResourceResponseFilter;
       /// <summary>
       /// Called on the IO thread when a resource load has completed. The |browser|
       /// and |frame| values represent the source of the request, and may be NULL
@@ -3426,7 +3426,7 @@ type
       /// <para>This event will be called on the browser process CEF IO thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_resource_request_handler_capi.h">CEF source file: /include/capi/cef_resource_request_handler_capi.h (cef_resource_request_handler_t)</see></para>
       /// </remarks>
-      property OnResourceLoadComplete           : TOnResourceLoadComplete           read FOnResourceLoadComplete           write FOnResourceLoadComplete;
+      property OnResourceLoadComplete           : TOnResourceLoadComplete                     read FOnResourceLoadComplete              write FOnResourceLoadComplete;
       /// <summary>
       /// Called on the IO thread to handle requests for URLs with an unknown
       /// protocol component. The |browser| and |frame| values represent the source
@@ -3441,7 +3441,7 @@ type
       /// <para>This event will be called on the browser process CEF IO thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_resource_request_handler_capi.h">CEF source file: /include/capi/cef_resource_request_handler_capi.h (cef_resource_request_handler_t)</see></para>
       /// </remarks>
-      property OnProtocolExecution              : TOnProtocolExecution              read FOnProtocolExecution              write FOnProtocolExecution;
+      property OnProtocolExecution              : TOnProtocolExecution                        read FOnProtocolExecution                 write FOnProtocolExecution;
       /// <summary>
       /// <para>Called on the IO thread before a resource request is sent. The |browser|
       /// and |frame| values represent the source of the request, and may be NULL
@@ -3453,7 +3453,7 @@ type
       /// <para>This event will be called on the browser process CEF IO thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_resource_request_handler_capi.h">CEF source file: /include/capi/cef_resource_request_handler_capi.h (cef_cookie_access_filter_t)</see></para>
       /// </remarks>
-      property OnCanSendCookie                  : TOnCanSendCookie                  read FOnCanSendCookie                  write FOnCanSendCookie;
+      property OnCanSendCookie                  : TOnCanSendCookie                            read FOnCanSendCookie                     write FOnCanSendCookie;
       /// <summary>
       /// <para>Called on the IO thread after a resource response is received. The
       /// |browser| and |frame| values represent the source of the request, and may
@@ -3466,7 +3466,7 @@ type
       /// <para>This event will be called on the browser process CEF IO thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_resource_request_handler_capi.h">CEF source file: /include/capi/cef_resource_request_handler_capi.h (cef_cookie_access_filter_t)</see></para>
       /// </remarks>
-      property OnCanSaveCookie                  : TOnCanSaveCookie                  read FOnCanSaveCookie                  write FOnCanSaveCookie;
+      property OnCanSaveCookie                  : TOnCanSaveCookie                            read FOnCanSaveCookie                     write FOnCanSaveCookie;
       /// <summary>
       /// <para>Called to run a file chooser dialog. |mode| represents the type of dialog
       /// to display. |title| to the title to be used for the dialog and may be NULL
@@ -3492,7 +3492,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_dialog_handler_capi.h">CEF source file: /include/capi/cef_dialog_handler_capi.h (cef_dialog_handler_t)</see></para>
       /// </remarks>
-      property OnFileDialog                     : TOnFileDialog                     read FOnFileDialog                     write FOnFileDialog;
+      property OnFileDialog                     : TOnFileDialog                               read FOnFileDialog                        write FOnFileDialog;
       /// <summary>
       /// Return the handler for accessibility notifications. If no handler is
       /// provided the default implementation will be used.
@@ -3501,7 +3501,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnGetAccessibilityHandler        : TOnGetAccessibilityHandler        read FOnGetAccessibilityHandler        write FOnGetAccessibilityHandler;
+      property OnGetAccessibilityHandler        : TOnGetAccessibilityHandler                  read FOnGetAccessibilityHandler           write FOnGetAccessibilityHandler;
       /// <summary>
       /// Called to retrieve the root window rectangle in screen DIP coordinates.
       /// Return true (1) if the rectangle was provided. If this function returns
@@ -3511,7 +3511,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnGetRootScreenRect              : TOnGetRootScreenRect              read FOnGetRootScreenRect              write FOnGetRootScreenRect;
+      property OnGetRootScreenRect              : TOnGetRootScreenRect                        read FOnGetRootScreenRect                 write FOnGetRootScreenRect;
       /// <summary>
       /// Called to retrieve the view rectangle in screen DIP coordinates. This
       /// function must always provide a non-NULL rectangle.
@@ -3520,7 +3520,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnGetViewRect                    : TOnGetViewRect                    read FOnGetViewRect                    write FOnGetViewRect;
+      property OnGetViewRect                    : TOnGetViewRect                              read FOnGetViewRect                       write FOnGetViewRect;
       /// <summary>
       /// Called to retrieve the translation from view DIP coordinates to screen
       /// coordinates. Windows/Linux should provide screen device (pixel)
@@ -3531,7 +3531,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnGetScreenPoint                 : TOnGetScreenPoint                 read FOnGetScreenPoint                 write FOnGetScreenPoint;
+      property OnGetScreenPoint                 : TOnGetScreenPoint                           read FOnGetScreenPoint                    write FOnGetScreenPoint;
       /// <summary>
       /// Called to allow the client to fill in the TCefScreenInfo object with
       /// appropriate values. Return true (1) if the |screen_info| structure has
@@ -3544,7 +3544,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnGetScreenInfo                  : TOnGetScreenInfo                  read FOnGetScreenInfo                  write FOnGetScreenInfo;
+      property OnGetScreenInfo                  : TOnGetScreenInfo                            read FOnGetScreenInfo                     write FOnGetScreenInfo;
       /// <summary>
       /// Called when the browser wants to show or hide the popup widget. The popup
       /// should be shown if |show| is true (1) and hidden if |show| is false (0).
@@ -3553,7 +3553,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnPopupShow                      : TOnPopupShow                      read FOnPopupShow                      write FOnPopupShow;
+      property OnPopupShow                      : TOnPopupShow                                read FOnPopupShow                         write FOnPopupShow;
       /// <summary>
       /// Called when the browser wants to move or resize the popup widget. |rect|
       /// contains the new location and size in view coordinates.
@@ -3562,7 +3562,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnPopupSize                      : TOnPopupSize                      read FOnPopupSize                      write FOnPopupSize;
+      property OnPopupSize                      : TOnPopupSize                                read FOnPopupSize                         write FOnPopupSize;
       /// <summary>
       /// Called when an element should be painted. Pixel values passed to this
       /// function are scaled relative to view coordinates based on the value of
@@ -3578,7 +3578,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnPaint                          : TOnPaint                          read FOnPaint                          write FOnPaint;
+      property OnPaint                          : TOnPaint                                    read FOnPaint                             write FOnPaint;
       /// <summary>
       /// <para>Called when an element has been rendered to the shared texture handle.
       /// |type| indicates whether the element is the view or the popup widget.
@@ -3601,7 +3601,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnAcceleratedPaint               : TOnAcceleratedPaint               read FOnAcceleratedPaint               write FOnAcceleratedPaint;
+      property OnAcceleratedPaint               : TOnAcceleratedPaint                         read FOnAcceleratedPaint                  write FOnAcceleratedPaint;
       /// <summary>
       /// Called to retrieve the size of the touch handle for the specified
       /// |orientation|.
@@ -3610,7 +3610,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnGetTouchHandleSize             : TOnGetTouchHandleSize             read FOnGetTouchHandleSize             write FOnGetTouchHandleSize;
+      property OnGetTouchHandleSize             : TOnGetTouchHandleSize                       read FOnGetTouchHandleSize                write FOnGetTouchHandleSize;
       /// <summary>
       /// Called when touch handle state is updated. The client is responsible for
       /// rendering the touch handles.
@@ -3619,7 +3619,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnTouchHandleStateChanged        : TOnTouchHandleStateChanged        read FOnTouchHandleStateChanged        write FOnTouchHandleStateChanged;
+      property OnTouchHandleStateChanged        : TOnTouchHandleStateChanged                  read FOnTouchHandleStateChanged           write FOnTouchHandleStateChanged;
       /// <summary>
       /// <para>Called when the user starts dragging content in the web view. Contextual
       /// information about the dragged content is supplied by |drag_data|. (|x|,
@@ -3636,7 +3636,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnStartDragging                  : TOnStartDragging                  read FOnStartDragging                  write FOnStartDragging;
+      property OnStartDragging                  : TOnStartDragging                            read FOnStartDragging                     write FOnStartDragging;
       /// <summary>
       /// Called when the web view wants to update the mouse cursor during a drag &
       /// drop operation. |operation| describes the allowed operation (none, move,
@@ -3646,7 +3646,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnUpdateDragCursor               : TOnUpdateDragCursor               read FOnUpdateDragCursor               write FOnUpdateDragCursor;
+      property OnUpdateDragCursor               : TOnUpdateDragCursor                         read FOnUpdateDragCursor                  write FOnUpdateDragCursor;
       /// <summary>
       /// Called when the scroll offset has changed.
       /// </summary>
@@ -3654,7 +3654,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnScrollOffsetChanged            : TOnScrollOffsetChanged            read FOnScrollOffsetChanged            write FOnScrollOffsetChanged;
+      property OnScrollOffsetChanged            : TOnScrollOffsetChanged                      read FOnScrollOffsetChanged               write FOnScrollOffsetChanged;
       /// <summary>
       /// Called when the IME composition range has changed. |selected_range| is the
       /// range of characters that have been selected. |character_bounds| is the
@@ -3664,7 +3664,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnIMECompositionRangeChanged     : TOnIMECompositionRangeChanged     read FOnIMECompositionRangeChanged     write FOnIMECompositionRangeChanged;
+      property OnIMECompositionRangeChanged     : TOnIMECompositionRangeChanged               read FOnIMECompositionRangeChanged        write FOnIMECompositionRangeChanged;
       /// <summary>
       /// Called when text selection has changed for the specified |browser|.
       /// |selected_text| is the currently selected text and |selected_range| is the
@@ -3674,7 +3674,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnTextSelectionChanged           : TOnTextSelectionChanged           read FOnTextSelectionChanged           write FOnTextSelectionChanged;
+      property OnTextSelectionChanged           : TOnTextSelectionChanged                     read FOnTextSelectionChanged              write FOnTextSelectionChanged;
       /// <summary>
       /// Called when an on-screen keyboard should be shown or hidden for the
       /// specified |browser|. |input_mode| specifies what kind of keyboard should
@@ -3685,7 +3685,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_render_handler_capi.h">CEF source file: /include/capi/cef_render_handler_capi.h (cef_render_handler_t)</see></para>
       /// </remarks>
-      property OnVirtualKeyboardRequested       : TOnVirtualKeyboardRequested       read FOnVirtualKeyboardRequested       write FOnVirtualKeyboardRequested;
+      property OnVirtualKeyboardRequested       : TOnVirtualKeyboardRequested                 read FOnVirtualKeyboardRequested          write FOnVirtualKeyboardRequested;
       /// <summary>
       /// Called when an external drag event enters the browser window. |dragData|
       /// contains the drag event data and |mask| represents the type of drag
@@ -3696,7 +3696,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_drag_handler_capi.h">CEF source file: /include/capi/cef_drag_handler_capi.h (cef_drag_handler_t)</see></para>
       /// </remarks>
-      property OnDragEnter                      : TOnDragEnter                      read FOnDragEnter                      write FOnDragEnter;
+      property OnDragEnter                      : TOnDragEnter                                read FOnDragEnter                         write FOnDragEnter;
       /// <summary>
       /// Called whenever draggable regions for the browser window change. These can
       /// be specified using the '-webkit-app-region: drag/no-drag' CSS-property. If
@@ -3708,7 +3708,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_drag_handler_capi.h">CEF source file: /include/capi/cef_drag_handler_capi.h (cef_drag_handler_t)</see></para>
       /// </remarks>
-      property OnDraggableRegionsChanged        : TOnDraggableRegionsChanged        read FOnDraggableRegionsChanged        write FOnDraggableRegionsChanged;
+      property OnDraggableRegionsChanged        : TOnDraggableRegionsChanged                  read FOnDraggableRegionsChanged           write FOnDraggableRegionsChanged;
       /// <summary>
       /// Called to report find results returned by ICefBrowserHost.find().
       /// |identifer| is a unique incremental identifier for the currently active
@@ -3722,7 +3722,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_find_handler_capi.h">CEF source file: /include/capi/cef_find_handler_capi.h (cef_find_handler_t)</see></para>
       /// </remarks>
-      property OnFindResult                     : TOnFindResult                     read FOnFindResult                     write FOnFindResult;
+      property OnFindResult                     : TOnFindResult                               read FOnFindResult                        write FOnFindResult;
       /// <summary>
       /// Called on the browser process UI thread immediately after the request
       /// context has been initialized.
@@ -3731,7 +3731,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_request_context_handler_capi.h">CEF source file: /include/capi/cef_request_context_handler_capi.h (cef_request_context_handler_t)</see></para>
       /// </remarks>
-      property OnRequestContextInitialized            : TOnRequestContextInitialized      read FOnRequestContextInitialized            write FOnRequestContextInitialized;
+      property OnRequestContextInitialized      : TOnRequestContextInitialized                read FOnRequestContextInitialized         write FOnRequestContextInitialized;
       /// <summary>
       /// Called on the browser process IO thread before a resource request is
       /// initiated. The |browser| and |frame| values represent the source of the
@@ -3755,7 +3755,7 @@ type
       /// <para>This event will be called on the browser process CEF IO thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_request_context_handler_capi.h">CEF source file: /include/capi/cef_request_context_handler_capi.h (cef_request_context_handler_t)</see></para>
       /// </remarks>
-      property OnGetResourceRequestHandler_ReqCtxHdlr : TOnGetResourceRequestHandler      read FOnGetResourceRequestHandler_ReqCtxHdlr write FOnGetResourceRequestHandler_ReqCtxHdlr;
+      property OnGetResourceRequestHandler_ReqCtxHdlr : TOnGetResourceRequestHandler          read FOnGetResourceRequestHandler2 write FOnGetResourceRequestHandler2;
       /// <summary>
       /// The list of available media sinks has changed or
       /// ICefMediaRouter.NotifyCurrentSinks was called.
@@ -3764,7 +3764,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_media_router_capi.h">CEF source file: /include/capi/cef_media_router_capi.h (cef_media_observer_t)</see></para>
       /// </remarks>
-      property OnSinks                                : TOnSinksEvent                     read FOnSinks                                write FOnSinks;
+      property OnSinks                                : TOnSinksEvent                         read FOnSinks                             write FOnSinks;
       /// <summary>
       /// The list of available media routes has changed or
       /// ICefMediaRouter.NotifyCurrentRoutes was called.
@@ -3773,7 +3773,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_media_router_capi.h">CEF source file: /include/capi/cef_media_router_capi.h (cef_media_observer_t)</see></para>
       /// </remarks>
-      property OnRoutes                               : TOnRoutesEvent                    read FOnRoutes                               write FOnRoutes;
+      property OnRoutes                               : TOnRoutesEvent                        read FOnRoutes                            write FOnRoutes;
       /// <summary>
       /// The connection state of |route| has changed.
       /// </summary>
@@ -3781,7 +3781,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_media_router_capi.h">CEF source file: /include/capi/cef_media_router_capi.h (cef_media_observer_t)</see></para>
       /// </remarks>
-      property OnRouteStateChanged                    : TOnRouteStateChangedEvent         read FOnRouteStateChanged                    write FOnRouteStateChanged;
+      property OnRouteStateChanged                    : TOnRouteStateChangedEvent             read FOnRouteStateChanged                 write FOnRouteStateChanged;
       /// <summary>
       /// A message was recieved over |route|. |message| is only valid for the scope
       /// of this callback and should be copied if necessary.
@@ -3790,7 +3790,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_media_router_capi.h">CEF source file: /include/capi/cef_media_router_capi.h (cef_media_observer_t)</see></para>
       /// </remarks>
-      property OnRouteMessageReceived                 : TOnRouteMessageReceivedEvent      read FOnRouteMessageReceived                 write FOnRouteMessageReceived;
+      property OnRouteMessageReceived                 : TOnRouteMessageReceivedEvent          read FOnRouteMessageReceived              write FOnRouteMessageReceived;
       /// <summary>
       /// Called on the UI thread to allow configuration of audio stream parameters.
       /// Return true (1) to proceed with audio stream capture, or false (0) to
@@ -3801,7 +3801,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_audio_handler_capi.h">CEF source file: /include/capi/cef_audio_handler_capi.h (cef_audio_handler_t)</see></para>
       /// </remarks>
-      property OnGetAudioParameters                   : TOnGetAudioParametersEvent        read FOnGetAudioParameters                   write FOnGetAudioParameters;
+      property OnGetAudioParameters                   : TOnGetAudioParametersEvent            read FOnGetAudioParameters                write FOnGetAudioParameters;
       /// <summary>
       /// Called on a browser audio capture thread when the browser starts streaming
       /// audio. OnAudioStreamStopped will always be called after
@@ -3813,7 +3813,7 @@ type
       /// <para>This event will be called on a browser audio capture thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_audio_handler_capi.h">CEF source file: /include/capi/cef_audio_handler_capi.h (cef_audio_handler_t)</see></para>
       /// </remarks>
-      property OnAudioStreamStarted                   : TOnAudioStreamStartedEvent        read FOnAudioStreamStarted                   write FOnAudioStreamStarted;
+      property OnAudioStreamStarted                   : TOnAudioStreamStartedEvent            read FOnAudioStreamStarted                write FOnAudioStreamStarted;
       /// <summary>
       /// Called on the audio stream thread when a PCM packet is received for the
       /// stream. |data| is an array representing the raw PCM data as a floating
@@ -3828,7 +3828,7 @@ type
       /// <para>This event will be called on a browser audio capture thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_audio_handler_capi.h">CEF source file: /include/capi/cef_audio_handler_capi.h (cef_audio_handler_t)</see></para>
       /// </remarks>
-      property OnAudioStreamPacket                    : TOnAudioStreamPacketEvent         read FOnAudioStreamPacket                    write FOnAudioStreamPacket;
+      property OnAudioStreamPacket                    : TOnAudioStreamPacketEvent             read FOnAudioStreamPacket                 write FOnAudioStreamPacket;
       /// <summary>
       /// Called on the UI thread when the stream has stopped. OnAudioSteamStopped
       /// will always be called after OnAudioStreamStarted; both functions may be
@@ -3838,7 +3838,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_audio_handler_capi.h">CEF source file: /include/capi/cef_audio_handler_capi.h (cef_audio_handler_t)</see></para>
       /// </remarks>
-      property OnAudioStreamStopped                   : TOnAudioStreamStoppedEvent        read FOnAudioStreamStopped                   write FOnAudioStreamStopped;
+      property OnAudioStreamStopped                   : TOnAudioStreamStoppedEvent            read FOnAudioStreamStopped                write FOnAudioStreamStopped;
       /// <summary>
       /// Called on the UI or audio stream thread when an error occurred. During the
       /// stream creation phase this callback will be called on the UI thread while
@@ -3849,7 +3849,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread or a browser audio capture thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_audio_handler_capi.h">CEF source file: /include/capi/cef_audio_handler_capi.h (cef_audio_handler_t)</see></para>
       /// </remarks>
-      property OnAudioStreamError                     : TOnAudioStreamErrorEvent          read FOnAudioStreamError                     write FOnAudioStreamError;
+      property OnAudioStreamError                     : TOnAudioStreamErrorEvent              read FOnAudioStreamError                  write FOnAudioStreamError;
       /// <summary>
       /// <para>Method that will be called on receipt of a DevTools protocol message.
       /// |browser| is the originating browser instance. |message| is a UTF8-encoded
@@ -3875,7 +3875,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_devtools_message_observer_capi.h">CEF source file: /include/capi/cef_devtools_message_observer_capi.h (cef_dev_tools_message_observer_t)</see></para>
       /// </remarks>
-      property OnDevToolsMessage                      : TOnDevToolsMessageEvent           read FOnDevToolsMessage                      write FOnDevToolsMessage;
+      property OnDevToolsMessage                      : TOnDevToolsMessageEvent               read FOnDevToolsMessage                   write FOnDevToolsMessage;
       /// <summary>
       /// <para>Method that will be called on receipt of a DevTools protocol message.
       /// |browser| is the originating browser instance. |message| is a UTF8-encoded
@@ -3901,7 +3901,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_devtools_message_observer_capi.h">CEF source file: /include/capi/cef_devtools_message_observer_capi.h (cef_dev_tools_message_observer_t)</see></para>
       /// </remarks>
-      property OnDevToolsRawMessage                   : TOnDevToolsRawMessageEvent        read FOnDevToolsRawMessage                   write FOnDevToolsRawMessage;
+      property OnDevToolsRawMessage                   : TOnDevToolsRawMessageEvent            read FOnDevToolsRawMessage                write FOnDevToolsRawMessage;
       /// <summary>
       /// <para>Method that will be called after attempted execution of a DevTools
       /// protocol function. |browser| is the originating browser instance.</para>
@@ -3918,7 +3918,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_devtools_message_observer_capi.h">CEF source file: /include/capi/cef_devtools_message_observer_capi.h (cef_dev_tools_message_observer_t)</see></para>
       /// </remarks>
-      property OnDevToolsMethodResult                 : TOnDevToolsMethodResultEvent      read FOnDevToolsMethodResult                 write FOnDevToolsMethodResult;
+      property OnDevToolsMethodResult                 : TOnDevToolsMethodResultEvent          read FOnDevToolsMethodResult              write FOnDevToolsMethodResult;
       /// <summary>
       /// <para>Method that will be called after attempted execution of a DevTools
       /// protocol function. |browser| is the originating browser instance.</para>
@@ -3935,7 +3935,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_devtools_message_observer_capi.h">CEF source file: /include/capi/cef_devtools_message_observer_capi.h (cef_dev_tools_message_observer_t)</see></para>
       /// </remarks>
-      property OnDevToolsMethodRawResult              : TOnDevToolsMethodRawResultEvent   read FOnDevToolsMethodRawResult              write FOnDevToolsMethodRawResult;
+      property OnDevToolsMethodRawResult              : TOnDevToolsMethodRawResultEvent       read FOnDevToolsMethodRawResult           write FOnDevToolsMethodRawResult;
       /// <summary>
       /// Method that will be called on receipt of a DevTools protocol event.
       /// |browser| is the originating browser instance. |function| is the
@@ -3948,7 +3948,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_devtools_message_observer_capi.h">CEF source file: /include/capi/cef_devtools_message_observer_capi.h (cef_dev_tools_message_observer_t)</see></para>
       /// </remarks>
-      property OnDevToolsEvent                        : TOnDevToolsEventEvent             read FOnDevToolsEvent                        write FOnDevToolsEvent;
+      property OnDevToolsEvent                        : TOnDevToolsEventEvent                 read FOnDevToolsEvent                     write FOnDevToolsEvent;
       /// <summary>
       /// Method that will be called on receipt of a DevTools protocol event.
       /// |browser| is the originating browser instance. |function| is the
@@ -3961,7 +3961,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_devtools_message_observer_capi.h">CEF source file: /include/capi/cef_devtools_message_observer_capi.h (cef_dev_tools_message_observer_t)</see></para>
       /// </remarks>
-      property OnDevToolsRawEvent                     : TOnDevToolsEventRawEvent          read FOnDevToolsRawEvent                     write FOnDevToolsRawEvent;
+      property OnDevToolsRawEvent                     : TOnDevToolsEventRawEvent              read FOnDevToolsRawEvent                  write FOnDevToolsRawEvent;
       /// <summary>
       /// Method that will be called when the DevTools agent has attached. |browser|
       /// is the originating browser instance. This will generally occur in response
@@ -3971,7 +3971,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_devtools_message_observer_capi.h">CEF source file: /include/capi/cef_devtools_message_observer_capi.h (cef_dev_tools_message_observer_t)</see></para>
       /// </remarks>
-      property OnDevToolsAgentAttached                : TOnDevToolsAgentAttachedEvent     read FOnDevToolsAgentAttached                write FOnDevToolsAgentAttached;
+      property OnDevToolsAgentAttached                : TOnDevToolsAgentAttachedEvent         read FOnDevToolsAgentAttached             write FOnDevToolsAgentAttached;
       /// <summary>
       /// Method that will be called when the DevTools agent has detached. |browser|
       /// is the originating browser instance. Any function results that were
@@ -3982,7 +3982,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_devtools_message_observer_capi.h">CEF source file: /include/capi/cef_devtools_message_observer_capi.h (cef_dev_tools_message_observer_t)</see></para>
       /// </remarks>
-      property OnDevToolsAgentDetached                : TOnDevToolsAgentDetachedEvent     read FOnDevToolsAgentDetached                write FOnDevToolsAgentDetached;
+      property OnDevToolsAgentDetached                : TOnDevToolsAgentDetachedEvent         read FOnDevToolsAgentDetached             write FOnDevToolsAgentDetached;
       {$IFDEF LINUX}
       /// <summary>
       /// Called when printing has started for the specified |browser|. This
@@ -3995,7 +3995,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_print_handler_capi.h">CEF source file: /include/capi/cef_print_handler_capi.h (cef_print_handler_t)</see></para>
       /// </remarks>
-      property OnPrintStart                           : TOnPrintStartEvent                read FOnPrintStart                           write FOnPrintStart;
+      property OnPrintStart                           : TOnPrintStartEvent                    read FOnPrintStart                        write FOnPrintStart;
       /// <summary>
       /// Synchronize |settings| with client state. If |get_defaults| is true (1)
       /// then populate |settings| with the default print settings. Do not keep a
@@ -4005,7 +4005,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_print_handler_capi.h">CEF source file: /include/capi/cef_print_handler_capi.h (cef_print_handler_t)</see></para>
       /// </remarks>
-      property OnPrintSettings                        : TOnPrintSettingsEvent             read FOnPrintSettings                        write FOnPrintSettings;
+      property OnPrintSettings                        : TOnPrintSettingsEvent                 read FOnPrintSettings                     write FOnPrintSettings;
       /// <summary>
       /// Show the print dialog. Execute |callback| once the dialog is dismissed.
       /// Return true (1) if the dialog will be displayed or false (0) to cancel the
@@ -4015,7 +4015,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_print_handler_capi.h">CEF source file: /include/capi/cef_print_handler_capi.h (cef_print_handler_t)</see></para>
       /// </remarks>
-      property OnPrintDialog                          : TOnPrintDialogEvent               read FOnPrintDialog                          write FOnPrintDialog;
+      property OnPrintDialog                          : TOnPrintDialogEvent                   read FOnPrintDialog                       write FOnPrintDialog;
       /// <summary>
       /// Send the print job to the printer. Execute |callback| once the job is
       /// completed. Return true (1) if the job will proceed or false (0) to cancel
@@ -4025,7 +4025,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_print_handler_capi.h">CEF source file: /include/capi/cef_print_handler_capi.h (cef_print_handler_t)</see></para>
       /// </remarks>
-      property OnPrintJob                             : TOnPrintJobEvent                  read FOnPrintJob                             write FOnPrintJob;
+      property OnPrintJob                             : TOnPrintJobEvent                      read FOnPrintJob                          write FOnPrintJob;
       /// <summary>
       /// Reset client state related to printing.
       /// </summary>
@@ -4033,7 +4033,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_print_handler_capi.h">CEF source file: /include/capi/cef_print_handler_capi.h (cef_print_handler_t)</see></para>
       /// </remarks>
-      property OnPrintReset                           : TOnPrintResetEvent                read FOnPrintReset                           write FOnPrintReset;
+      property OnPrintReset                           : TOnPrintResetEvent                    read FOnPrintReset                        write FOnPrintReset;
       /// <summary>
       /// Return the PDF paper size in device units. Used in combination with
       /// ICefBrowserHost.PrintToPdf().
@@ -4042,7 +4042,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_print_handler_capi.h">CEF source file: /include/capi/cef_print_handler_capi.h (cef_print_handler_t)</see></para>
       /// </remarks>
-      property OnGetPDFPaperSize                      : TOnGetPDFPaperSizeEvent           read FOnGetPDFPaperSize                      write FOnGetPDFPaperSize;
+      property OnGetPDFPaperSize                      : TOnGetPDFPaperSizeEvent               read FOnGetPDFPaperSize                   write FOnGetPDFPaperSize;
       {$ENDIF}
       /// <summary>
       /// Called when a new frame is created. This will be the first notification
@@ -4056,7 +4056,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_frame_handler_capi.h">CEF source file: /include/capi/cef_frame_handler_capi.h (cef_frame_handler_t)</see></para>
       /// </remarks>
-      property OnFrameCreated                         : TOnFrameCreated                   read FOnFrameCreated                         write FOnFrameCreated;
+      property OnFrameCreated                         : TOnFrameCreated                       read FOnFrameCreated                      write FOnFrameCreated;
       /// <summary>
       /// Called when an existing frame is destroyed. This will be the last
       /// notification that references |frame| and ICefFrame.IsValid will
@@ -4069,7 +4069,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_frame_handler_capi.h">CEF source file: /include/capi/cef_frame_handler_capi.h (cef_frame_handler_t)</see></para>
       /// </remarks>
-      property OnFrameDestroyed                       : TOnFrameDestroyed                 read FOnFrameDestroyed                       write FOnFrameDestroyed;
+      property OnFrameDestroyed                       : TOnFrameDestroyed                     read FOnFrameDestroyed                    write FOnFrameDestroyed;
       /// <summary>
       /// Called when a frame can begin routing commands to/from the associated
       /// renderer process. |reattached| will be true (1) if the frame was re-
@@ -4082,7 +4082,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_frame_handler_capi.h">CEF source file: /include/capi/cef_frame_handler_capi.h (cef_frame_handler_t)</see></para>
       /// </remarks>
-      property OnFrameAttached                        : TOnFrameAttached                  read FOnFrameAttached                        write FOnFrameAttached;
+      property OnFrameAttached                        : TOnFrameAttached                      read FOnFrameAttached                     write FOnFrameAttached;
       /// <summary>
       /// Called when a frame loses its connection to the renderer process. This may
       /// occur when a frame is destroyed, enters the BackForwardCache, or
@@ -4102,7 +4102,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_frame_handler_capi.h">CEF source file: /include/capi/cef_frame_handler_capi.h (cef_frame_handler_t)</see></para>
       /// </remarks>
-      property OnFrameDetached                        : TOnFrameDetached                  read FOnFrameDetached                        write FOnFrameDetached;
+      property OnFrameDetached                        : TOnFrameDetached                      read FOnFrameDetached                     write FOnFrameDetached;
       /// <summary>
       /// Called when the main frame changes due to (a) initial browser creation,
       /// (b) final browser destruction, (c) cross-origin navigation or (d) re-
@@ -4122,7 +4122,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_frame_handler_capi.h">CEF source file: /include/capi/cef_frame_handler_capi.h (cef_frame_handler_t)</see></para>
       /// </remarks>
-      property OnMainFrameChanged                     : TOnMainFrameChanged               read FOnMainFrameChanged                     write FOnMainFrameChanged;
+      property OnMainFrameChanged                     : TOnMainFrameChanged                   read FOnMainFrameChanged                  write FOnMainFrameChanged;
       /// <summary>
       /// Called to execute a Chrome command triggered via menu selection or
       /// keyboard shortcut. Use the cef_id_for_command_id_name() function for
@@ -4204,7 +4204,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_permission_handler_capi.h">CEF source file: /include/capi/cef_permission_handler_capi.h (cef_permission_handler_t)</see></para>
       /// </remarks>
-      property OnRequestMediaAccessPermission         : TOnRequestMediaAccessPermissionEvent read FOnRequestMediaAccessPermission      write FOnRequestMediaAccessPermission;
+      property OnRequestMediaAccessPermission         : TOnRequestMediaAccessPermissionEvent  read FOnRequestMediaAccessPermission      write FOnRequestMediaAccessPermission;
       /// <summary>
       /// <para>Called when a page should show a permission prompt. |prompt_id| uniquely
       /// identifies the prompt. |requesting_origin| is the URL origin requesting
@@ -4220,7 +4220,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_permission_handler_capi.h">CEF source file: /include/capi/cef_permission_handler_capi.h (cef_permission_handler_t)</see></para>
       /// </remarks>
-      property OnShowPermissionPrompt                 : TOnShowPermissionPromptEvent         read FOnShowPermissionPrompt              write FOnShowPermissionPrompt;
+      property OnShowPermissionPrompt                 : TOnShowPermissionPromptEvent          read FOnShowPermissionPrompt              write FOnShowPermissionPrompt;
       /// <summary>
       /// Called when a permission prompt handled via OnShowPermissionPrompt is
       /// dismissed. |prompt_id| will match the value that was passed to
@@ -4234,7 +4234,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_permission_handler_capi.h">CEF source file: /include/capi/cef_permission_handler_capi.h (cef_permission_handler_t)</see></para>
       /// </remarks>
-      property OnDismissPermissionPrompt              : TOnDismissPermissionPromptEvent      read FOnDismissPermissionPrompt           write FOnDismissPermissionPrompt;
+      property OnDismissPermissionPrompt              : TOnDismissPermissionPromptEvent       read FOnDismissPermissionPrompt           write FOnDismissPermissionPrompt;
       /// <summary>
       /// Called when a preference has changed. The new value can be retrieved using
       /// ICefRequestContext.GetPreference.
@@ -4243,7 +4243,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_preference_capi.h">CEF source file: /include/capi/cef_preference_capi.h (cef_preference_observer_t)</see></para>
       /// </remarks>
-      property OnPreferenceChanged                    : TOnPreferenceChangedEvent            read FOnPreferenceChanged                 write FOnPreferenceChanged;
+      property OnPreferenceChanged                    : TOnPreferenceChangedEvent             read FOnPreferenceChanged                 write FOnPreferenceChanged;
       /// <summary>
       /// Called when a content or website setting has changed. The new value can be
       /// retrieved using ICefRequestContext.GetContentSetting or
@@ -4253,7 +4253,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_preference_capi.h">CEF source file: /include/capi/cef_preference_capi.h (cef_setting_observer_t)</see></para>
       /// </remarks>
-      property OnSettingChanged                      : TOnSettingChangedEvent                read FOnSettingChanged                    write FOnSettingChanged;
+      property OnSettingChanged                       : TOnSettingChangedEvent                read FOnSettingChanged                    write FOnSettingChanged;
       /// <summary>
       /// Called when the component update operation completes. |component_id| is
       /// the ID of the component that was updated. |error| contains the result of
@@ -4263,7 +4263,7 @@ type
       /// <para>This event will be called on the browser process CEF UI thread.</para>
       /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/capi/cef_component_updater_capi.h">CEF source file: /include/capi/cef_component_updater_capi.h (cef_component_update_callback_t)</see></para>
       /// </remarks>
-      property OnComponentUpdateCompleted            : TOnComponentUpdateCompletedEvent      read FOnComponentUpdateCompleted          write FOnComponentUpdateCompleted;
+      property OnComponentUpdateCompleted             : TOnComponentUpdateCompletedEvent      read FOnComponentUpdateCompleted          write FOnComponentUpdateCompleted;
   end;
 
   TBrowserInfo = class
@@ -4950,7 +4950,7 @@ begin
   FOnRenderProcessUnresponsive         := nil;
   FOnRenderProcessResponsive           := nil;
   FOnRenderProcessTerminated           := nil;
-  FOnGetResourceRequestHandler_ReqHdlr := nil;
+  FOnGetResourceRequestHandler1 := nil;
   FOnDocumentAvailableInMainFrame      := nil;
 
   // ICefResourceRequestHandler
@@ -4997,7 +4997,7 @@ begin
 
   // ICefRequestContextHandler
   FOnRequestContextInitialized            := nil;
-  FOnGetResourceRequestHandler_ReqCtxHdlr := nil;
+  FOnGetResourceRequestHandler2 := nil;
 
   // ICefMediaObserver
   FOnSinks                            := nil;
@@ -9351,10 +9351,10 @@ begin
   if (FResourceRequestHandler <> nil) then
     aResourceRequestHandler := FResourceRequestHandler;
 
-  if assigned(FOnGetResourceRequestHandler_ReqCtxHdlr) then
-    FOnGetResourceRequestHandler_ReqCtxHdlr(self, browser, frame, request, is_navigation, is_download,
-                                            request_initiator, disable_default_handling,
-                                            aResourceRequestHandler);
+  if assigned(FOnGetResourceRequestHandler2) then
+    FOnGetResourceRequestHandler2(self, browser, frame, request, is_navigation, is_download,
+                                  request_initiator, disable_default_handling,
+                                  aResourceRequestHandler);
 end;
 
 procedure TChromiumCore.doOnSinks(const sinks: TCefMediaSinkArray);
@@ -9855,10 +9855,10 @@ begin
   if (FResourceRequestHandler <> nil) then
     aResourceRequestHandler := FResourceRequestHandler;
 
-  if assigned(FOnGetResourceRequestHandler_ReqHdlr) then
-    FOnGetResourceRequestHandler_ReqHdlr(self, browser, frame, request, is_navigation, is_download,
-                                         request_initiator, disable_default_handling,
-                                         aResourceRequestHandler);
+  if assigned(FOnGetResourceRequestHandler1) then
+    FOnGetResourceRequestHandler1(self, browser, frame, request, is_navigation, is_download,
+                                  request_initiator, disable_default_handling,
+                                  aResourceRequestHandler);
 end;
 
 procedure TChromiumCore.doOnPaint(const browser         : ICefBrowser;

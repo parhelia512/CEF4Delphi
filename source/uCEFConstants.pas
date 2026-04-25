@@ -299,6 +299,16 @@ const
   /// </remarks>
   ERR_BLOCKED_IN_INCOGNITO_BY_ADMINISTRATOR                   = -35;
   /// <summary>
+  /// The request was blocked because the local network permission is missing.
+  /// Note that this is different from BLOCKED_BY_LOCAL_NETWORK_ACCESS_CHECKS
+  /// which is specifically for a CORS error code.
+  /// </summary>
+  /// <remarks>
+  /// <para>TCefErrorCode value.</para>
+  /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/internal/cef_types.h">CEF source file: /include/internal/cef_types.h (cef_errorcode_t)</see></para>
+  /// </remarks>
+  ERR_LOCAL_NETWORK_PERMISSION_MISSING                        = -36;
+  /// <summary>
   /// A connection was closed (corresponding to a TCP FIN).
   /// </summary>
   /// <remarks>
@@ -2328,7 +2338,6 @@ const
   IDC_SHOW_PAYMENT_METHODS = 35042;
   IDC_SHOW_ADDRESSES = 35043;
   IDC_ORGANIZE_TABS = 35044;
-  IDC_DECLUTTER_TABS = 35045;
   IDC_SEND_SHARED_TAB_GROUP_FEEDBACK = 35046;
   IDC_SHOW_IDENTITY_DOCS = 35047;
   IDC_SHOW_TRAVEL = 35048;
@@ -2452,10 +2461,6 @@ const
   IDC_TASK_MANAGER_SHORTCUT = 40286;
   IDC_TASK_MANAGER_CONTEXT_MENU = 40287;
   IDC_TASK_MANAGER_MAIN_MENU = 40288;
-  IDC_COMPARE_MENU = 40289;
-  IDC_SHOW_ALL_COMPARISON_TABLES = 40290;
-  IDC_ADD_TO_COMPARISON_TABLE_MENU = 40291;
-  IDC_CREATE_NEW_COMPARISON_TABLE_WITH_TAB = 40292;
   IDC_SHOW_HISTORY_SIDE_PANEL = 40293;
   IDC_OPEN_GLIC = 40294;
   IDC_FIND_EXTENSIONS = 40295;
@@ -2660,6 +2665,7 @@ const
   IDC_CONTENT_CONTEXT_AUTOFILL_FALLBACK_PASSWORDS_IMPORT_PASSWORDS = 52999;
   IDC_CONTENT_CONTEXT_AUTOFILL_FALLBACK_PASSWORDS_SUGGEST_PASSWORD = 53000;
   IDC_CONTENT_CONTEXT_AUTOFILL_FALLBACK_PASSWORDS_USE_PASSKEY_FROM_ANOTHER_DEVICE = 53002;
+  IDC_CONTENT_CONTEXT_AUTOFILL_FALLBACK_AT_MEMORY = 53003;
   IDC_LIVE_CAPTION = 53251;
   IDC_DEVICE_SYSTEM_TRAY_ICON_FIRST = 53260;
   IDC_DEVICE_SYSTEM_TRAY_ICON_LAST = 53299;
@@ -2672,6 +2678,9 @@ const
   IDC_GLIC_STATUS_ICON_MENU_CLOSE = 53315;
   IDC_GLIC_STATUS_ICON_MENU_TOGGLE = 53316;
   IDC_GLIC_TOGGLE_PIN = 53320;
+  IDC_TAB_SEARCH_TOGGLE_PIN = 53321;
+  IDC_PROJECTS_PANEL_TOGGLE_PIN = 53322;
+  IDC_EVERYTHING_MENU_TOGGLE_PIN = 53323;
   IDC_SHOW_CONTEXTUAL_TASKS_SIDE_PANEL = 54000;
   IDC_OMNIBOX_CONTEXT_ADD_IMAGE = 54010;
   IDC_OMNIBOX_CONTEXT_ADD_FILE = 54011;
@@ -4173,6 +4182,7 @@ const
   CEF_PERMISSION_TYPE_LOCAL_NETWORK_ACCESS       = 1 shl 25;  {* CEF_API_ADDED(13600) *}
   CEF_PERMISSION_TYPE_LOCAL_NETWORK              = 1 shl 26;  {* CEF_API_ADDED(14500) *}
   CEF_PERMISSION_TYPE_LOOPBACK_NETWORK           = 1 shl 27;  {* CEF_API_ADDED(14500) *}
+  CEF_PERMISSION_TYPE_SENSORS                    = 1 shl 28;  {* CEF_API_ADDED(14700) *}
 
 
   /// <summary>
@@ -4951,6 +4961,17 @@ const
   /// </remarks>
   CEF_RESULT_CODE_TERMINATED_BY_OTHER_PROCESS_ON_COMMIT_FAILURE = 39;   {* CEF_API_ADDED(13900) *}
   /// <summary>
+  /// The isolated browser process launched but it was not possible to wait on
+  /// the exit of the process, so the browser must exit.
+  /// </summary>
+  /// <remarks>
+  /// <para>TCefResultCode value.</para>
+  /// <para><see href="https://bitbucket.org/chromiumembedded/cef/src/master/include/internal/cef_types.h">CEF source file: /include/internal/cef_types.h (cef_resultcode_t)</see></para>
+  /// <para><see href="https://source.chromium.org/chromium/chromium/src/+/main:chrome/common/chrome_result_codes.h">See chrome::ResultCode type.</see></para>
+  /// <para>Use CefResultCodeToString in uCEFMiscFunctions to convert this value into a human readable message</para>
+  /// </remarks>
+  CEF_RESULT_CODE_INVALID_ISOLATED_BROWSER_PROCESS = 40;   {* CEF_API_ADDED(14700) *}
+  /// <summary>
   /// Last Chrome result code.
   /// </summary>
   /// <remarks>
@@ -4959,7 +4980,7 @@ const
   /// <para><see href="https://source.chromium.org/chromium/chromium/src/+/main:chrome/common/chrome_result_codes.h">See chrome::ResultCode type.</see></para>
   /// <para>Use CefResultCodeToString in uCEFMiscFunctions to convert this value into a human readable message</para>
   /// </remarks>
-  CEF_RESULT_CODE_CHROME_LAST = 40;
+  CEF_RESULT_CODE_CHROME_LAST = 41;
   /// <summary>
   /// First Sandbox result code.
   /// </summary>

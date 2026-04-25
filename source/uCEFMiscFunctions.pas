@@ -3647,6 +3647,7 @@ begin
     CEF_RESULT_CODE_SYSTEM_RESOURCE_EXHAUSTED                          : Result := 'The browser process exited because system resource are exhausted. The system state can' + #39 + 't be recovered and will be unstable.';
     CEF_RESULT_CODE_NORMAL_EXIT_AUTO_DE_ELEVATED                       : Result := 'The browser process exited because it was re-launched without elevation.';
     CEF_RESULT_CODE_TERMINATED_BY_OTHER_PROCESS_ON_COMMIT_FAILURE      : Result := 'Upon encountering a commit failure in a process, PartitionAlloc terminated another process deemed less important.';
+    CEF_RESULT_CODE_INVALID_ISOLATED_BROWSER_PROCESS                   : Result := 'The isolated browser process launched but it was not possible to wait on the exit of the process, so the browser must exit.';
     CEF_RESULT_CODE_SANDBOX_FATAL_INTEGRITY                            : Result := 'Windows sandbox could not set the integrity level.';
     CEF_RESULT_CODE_SANDBOX_FATAL_DROPTOKEN                            : Result := 'Windows sandbox could not lower the token.';
     CEF_RESULT_CODE_SANDBOX_FATAL_FLUSHANDLES                          : Result := 'Windows sandbox failed to flush registry handles.';

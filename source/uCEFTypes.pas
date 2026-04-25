@@ -3438,7 +3438,7 @@ type
   /// </remarks>
   TCefChromePageActionIconType = (
     CEF_CPAIT_BOOKMARK_STAR,
-    CEF_CPAIT_CLICK_TO_CALL,
+    CEF_CPAIT_CLICK_TO_CALL_DEPRECATED,
     CEF_CPAIT_COOKIE_CONTROLS,
     CEF_CPAIT_FILE_SYSTEM_ACCESS,
     CEF_CPAIT_FIND,
@@ -3476,6 +3476,10 @@ type
     CEF_CPAIT_READING_MODE,            {* CEF_API_ADDED(14400) *}
     CEF_CPAIT_CONTEXTUAL_SIDE_PANEL,   {* CEF_API_ADDED(14400) *}
     CEF_CPAIT_JS_OPTIMIZATIONS,        {* CEF_API_ADDED(14400) *}
+    CEF_CPAIT_RECORD_REPLAY,           {* CEF_API_ADDED(14700) *}
+    CEF_CPAIT_INDIGO,                  {* CEF_API_ADDED(14700) *}
+    CEF_CPAIT_FEDERATION_DEPRECATED,   {* CEF_API_ADDED(CEF_EXPERIMENTAL) *}
+    CEF_CPAIT_GLIC,                    {* CEF_API_ADDED(CEF_EXPERIMENTAL) *}
     CEF_CPAIT_NUM_VALUES
   );
 
@@ -4699,7 +4703,7 @@ type
     /// panel will show an incomplete tree. Platform screen readers (NVDA, JAWS,
     /// VoiceOver) are unaffected — they use a separate code path.
     /// Can also be configured at runtime using
-    /// CefBrowserHost::SetAxViewportCollapse.
+    /// ICefBrowserHost.SetAxViewportCollapse.
     /// </summary>
     ax_viewport_collapse            : TCefState;        {* CEF_API_ADDED(CEF_EXPERIMENTAL) *}
   end;
